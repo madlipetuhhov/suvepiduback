@@ -1,14 +1,13 @@
 package ee.valiit.suvepiduback.infrastructure.validation;
 
-import ee.valiit.bank33back.domain.location.Location;
-import ee.valiit.bank33back.domain.user.User;
-import ee.valiit.bank33back.infrastructure.exception.DataNotFoundException;
-import ee.valiit.bank33back.infrastructure.exception.ForbiddenException;
+import ee.valiit.suvepiduback.domain.account.user.User;
+import ee.valiit.suvepiduback.infrastructure.exception.DataNotFoundException;
+import ee.valiit.suvepiduback.infrastructure.exception.ForbiddenException;
 
 import java.util.List;
 import java.util.Optional;
 
-import static ee.valiit.bank33back.infrastructure.error.Error.*;
+import static ee.valiit.suvepiduback.infrastructure.error.Error.*;
 
 public class ValidationService {
 
@@ -19,11 +18,11 @@ public class ValidationService {
         return optionalUser.get();
     }
 
-    public static void validateLocationExists(List<Location> locations) {
-        if (locations.isEmpty()) {
-            throw new DataNotFoundException(NO_LOCATION_FOUND.getMessage(), NO_LOCATION_FOUND.getErrorCode());
-        }
-    }
+//    public static void validateLocationExists(List<Location> locations) {
+//        if (locations.isEmpty()) {
+//            throw new DataNotFoundException(NO_LOCATION_FOUND.getMessage(), NO_LOCATION_FOUND.getErrorCode());
+//        }
+//    }
 
     public static void validateLocationNameAvailable(boolean locationNameExists) {
         if (locationNameExists) {
