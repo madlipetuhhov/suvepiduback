@@ -1,6 +1,6 @@
 package ee.valiit.suvepiduback.domain.account.user;
 
-import ee.valiit.suvepiduback.domain.account.role.Role;
+import ee.valiit.suvepiduback.domain.account.user.role.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

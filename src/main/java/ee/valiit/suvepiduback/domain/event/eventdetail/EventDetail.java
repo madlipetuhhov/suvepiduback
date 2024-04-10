@@ -1,6 +1,6 @@
 package ee.valiit.suvepiduback.domain.event.eventdetail;
 
-import ee.valiit.suvepiduback.domain.event.county.County;
+import ee.valiit.suvepiduback.domain.event.eventdetail.county.County;
 import ee.valiit.suvepiduback.domain.event.mainevent.MainEvent;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

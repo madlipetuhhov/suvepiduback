@@ -1,6 +1,6 @@
-package ee.valiit.suvepiduback.domain.event.eventfeature;
+package ee.valiit.suvepiduback.domain.event.mainevent.eventfeature;
 
-import ee.valiit.suvepiduback.domain.event.feature.Feature;
+import ee.valiit.suvepiduback.domain.event.mainevent.eventfeature.feature.Feature;
 import ee.valiit.suvepiduback.domain.event.mainevent.MainEvent;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

@@ -1,4 +1,4 @@
-package ee.valiit.suvepiduback.domain.account.role;
+package ee.valiit.suvepiduback.domain.event.eventdetail.county;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -9,8 +9,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "role", schema = "suvepidu")
-public class Role {
+@Table(name = "county", schema = "suvepidu")
+public class County {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -18,7 +18,7 @@ public class Role {
 
     @Size(max = 50)
     @NotNull
-    @Column(name = "name", nullable = false, length = 50)
-    private String name;
+    @Column(name = "county", nullable = false, length = 50)
+    private String county;
 
 }
