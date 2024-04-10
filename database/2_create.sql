@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2024-04-09 12:53:10.915
+-- Last modification date: 2024-04-10 12:02:03.122
 
 -- tables
 -- Table: business
@@ -32,48 +32,48 @@ CREATE TABLE county
     CONSTRAINT county_pk PRIMARY KEY (id)
 );
 
--- Table: event
-CREATE TABLE event
-(
-    id         serial        NOT NULL,
-    event_id   int           NOT NULL,
-    county_id  int           NOT NULL,
-    date       date          NOT NULL,
-    start_time time          NOT NULL,
-    end_time   time          NOT NULL,
-    address    varchar(50)   NOT NULL,
-    longitude  decimal(8, 6) NOT NULL,
-    latitude   decimal(8, 6) NOT NULL,
-    CONSTRAINT event_pk PRIMARY KEY (id)
-);
-
 -- Table: event_category
 CREATE TABLE event_category
 (
     id            serial NOT NULL,
-    category_id   int    NOT NULL,
     main_event_id int    NOT NULL,
+    category_id   int    NOT NULL,
     CONSTRAINT event_category_pk PRIMARY KEY (id)
+);
+
+-- Table: event_detail
+CREATE TABLE event_detail
+(
+    id            serial        NOT NULL,
+    main_event_id int           NOT NULL,
+    county_id     int           NOT NULL,
+    date          date          NOT NULL,
+    start_time    time          NOT NULL,
+    end_time      time          NOT NULL,
+    address       varchar(50)   NOT NULL,
+    longitude     decimal(8, 6) NOT NULL,
+    latitude      decimal(8, 6) NOT NULL,
+    CONSTRAINT event_detail_pk PRIMARY KEY (id)
 );
 
 -- Table: event_feature
 CREATE TABLE event_feature
 (
-    id         serial NOT NULL,
-    event_id   int    NOT NULL,
-    feature_id int    NOT NULL,
+    id            serial NOT NULL,
+    main_event_id int    NOT NULL,
+    feature_id    int    NOT NULL,
     CONSTRAINT event_feature_pk PRIMARY KEY (id)
 );
 
 -- Table: event_ticket
 CREATE TABLE event_ticket
 (
-    id             serial  NOT NULL,
-    event_id       int     NOT NULL,
-    ticket_type_id int     NOT NULL,
-    total          int     NOT NULL,
-    available      int     NOT NULL,
-    status         char(1) NOT NULL,
+    id              serial  NOT NULL,
+    event_detail_id int     NOT NULL,
+    ticket_type_id  int     NOT NULL,
+    total           int     NOT NULL,
+    available       int     NOT NULL,
+    status          char(1) NOT NULL,
     CONSTRAINT event_ticket_pk PRIMARY KEY (id)
 );
 
@@ -110,8 +110,8 @@ CREATE TABLE "order"
 -- Table: role
 CREATE TABLE role
 (
-    id   serial NOT NULL,
-    name varchar(50)    NOT NULL,
+    id   serial      NOT NULL,
+    name varchar(50) NOT NULL,
     CONSTRAINT role_pk PRIMARY KEY (id)
 );
 
@@ -119,9 +119,9 @@ CREATE TABLE role
 CREATE TABLE ticket_type
 (
     id            serial      NOT NULL,
+    main_event_id int         NOT NULL,
     name          varchar(50) NOT NULL,
     price         int         NOT NULL,
-    main_event_id int         NOT NULL,
     CONSTRAINT ticket_type_pk PRIMARY KEY (id)
 );
 
@@ -164,8 +164,8 @@ ALTER TABLE event_category
                 INITIALLY IMMEDIATE
 ;
 
--- Reference: event_detail_county (table: event)
-ALTER TABLE event
+-- Reference: event_detail_county (table: event_detail)
+ALTER TABLE event_detail
     ADD CONSTRAINT event_detail_county
         FOREIGN KEY (county_id)
             REFERENCES county (id)
@@ -173,19 +173,10 @@ ALTER TABLE event
                 INITIALLY IMMEDIATE
 ;
 
--- Reference: event_detail_event (table: event)
-ALTER TABLE event
-    ADD CONSTRAINT event_detail_event
-        FOREIGN KEY (event_id)
-            REFERENCES main_event (id)
-            NOT DEFERRABLE
-                INITIALLY IMMEDIATE
-;
-
--- Reference: event_feature_event (table: event_feature)
-ALTER TABLE event_feature
-    ADD CONSTRAINT event_feature_event
-        FOREIGN KEY (event_id)
+-- Reference: event_detail_main_event (table: event_detail)
+ALTER TABLE event_detail
+    ADD CONSTRAINT event_detail_main_event
+        FOREIGN KEY (main_event_id)
             REFERENCES main_event (id)
             NOT DEFERRABLE
                 INITIALLY IMMEDIATE
@@ -200,11 +191,20 @@ ALTER TABLE event_feature
                 INITIALLY IMMEDIATE
 ;
 
--- Reference: event_ticket_event (table: event_ticket)
+-- Reference: event_feature_main_event (table: event_feature)
+ALTER TABLE event_feature
+    ADD CONSTRAINT event_feature_main_event
+        FOREIGN KEY (main_event_id)
+            REFERENCES main_event (id)
+            NOT DEFERRABLE
+                INITIALLY IMMEDIATE
+;
+
+-- Reference: event_ticket_event_detail (table: event_ticket)
 ALTER TABLE event_ticket
-    ADD CONSTRAINT event_ticket_event
-        FOREIGN KEY (event_id)
-            REFERENCES event (id)
+    ADD CONSTRAINT event_ticket_event_detail
+        FOREIGN KEY (event_detail_id)
+            REFERENCES event_detail (id)
             NOT DEFERRABLE
                 INITIALLY IMMEDIATE
 ;
