@@ -1,13 +1,12 @@
 package ee.valiit.suvepiduback.infrastructure.validation;
 
 import ee.valiit.suvepiduback.domain.account.user.User;
-import ee.valiit.suvepiduback.infrastructure.exception.DataNotFoundException;
 import ee.valiit.suvepiduback.infrastructure.exception.ForbiddenException;
 
-import java.util.List;
 import java.util.Optional;
 
-import static ee.valiit.suvepiduback.infrastructure.error.Error.*;
+import static ee.valiit.suvepiduback.infrastructure.error.Error.INCORRECT_CREDENTIALS;
+import static ee.valiit.suvepiduback.infrastructure.error.Error.LOCATION_UNAVAILABLE;
 
 public class ValidationService {
 
