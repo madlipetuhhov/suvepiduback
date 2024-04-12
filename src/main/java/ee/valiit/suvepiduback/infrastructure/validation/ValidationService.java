@@ -23,10 +23,10 @@ public class ValidationService {
 //        }
 //    }
 
-    public static void validateLocationNameAvailable(boolean locationNameExists) {
-        if (locationNameExists) {
-            throw new ForbiddenException(LOCATION_UNAVAILABLE.getMessage(), LOCATION_UNAVAILABLE.getErrorCode());
-        }
-    }
+//    public static void validateLocationNameAvailable(boolean locationNameExists) {
+//        if (locationNameExists) {
+//            throw new ForbiddenException(LOCATION_UNAVAILABLE.getMessage(), LOCATION_UNAVAILABLE.getErrorCode());
+//        }
+//    }
 
 }
