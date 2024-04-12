@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
 public class LoginController {
-    private LoginService loginService;
+    private final LoginService loginService;
 
     @GetMapping("/login")
 
