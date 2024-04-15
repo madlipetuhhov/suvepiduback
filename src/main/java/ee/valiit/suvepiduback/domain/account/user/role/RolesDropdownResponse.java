@@ -1,4 +1,4 @@
-package ee.valiit.suvepiduback.domain.account.user;
+package ee.valiit.suvepiduback.domain.account.user.role;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,12 +7,12 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * DTO for {@link User}
+ * DTO for {@link Role}
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginResponse implements Serializable {
-    private Integer userId;
+public class RolesDropdownResponse implements Serializable {
+    private Integer roleId;
     private String roleName;
 }

@@ -1,7 +1,7 @@
-package ee.valiit.suvepiduback.summerevent;
+package ee.valiit.suvepiduback.summerevent.login;
 
-import ee.valiit.suvepiduback.domain.account.user.LoginResponse;
 import ee.valiit.suvepiduback.infrastructure.error.ApiError;
+import ee.valiit.suvepiduback.summerevent.login.dto.LoginResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
