@@ -29,10 +29,7 @@ public class NewAccountService {
     }
 
     public void addNewUser(UserInfo userInfo) {
-//        User user1 = userRepository.getReferenceById(userInfo.getRoleId());
         User user = userMapper.toUser(userInfo);
         userRepository.save(user);
-
-
     }
 }
