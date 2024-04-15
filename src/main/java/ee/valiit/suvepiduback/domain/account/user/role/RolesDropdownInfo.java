@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RolesDropdownResponse implements Serializable {
+public class RolesDropdownInfo implements Serializable {
     private Integer roleId;
     private String roleName;
 }
