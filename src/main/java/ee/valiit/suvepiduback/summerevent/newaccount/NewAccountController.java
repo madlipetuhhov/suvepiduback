@@ -15,14 +15,16 @@ public class NewAccountController {
     private final NewAccountService newAccountService;
 
     @PostMapping("/new-user")
+    @Operation(summary = "Uue kasutaja lisamine.",
+            description = "Süsteemi lisatakse uus kasutaja roleId, username ja password abil.")
     public void addNewUser(@RequestBody @Valid UserInfo userInfo) {
         newAccountService.addNewUser(userInfo);
     }
 
 
     @GetMapping("/roles")
-    @Operation(summary = "Rollide valiku loomine. Tagastab roleId",
-            description = "Süsteemist otsitakse roleId abil rollid")
+    @Operation(summary = "Rollide valiku loomine. Tagastab roleId.",
+            description = "Süsteemist otsitakse roleId abil rollid.")
     public List<RolesDropdownInfo> executeRolesDropdown() {
         return newAccountService.executeRolesDropdown();
     }
