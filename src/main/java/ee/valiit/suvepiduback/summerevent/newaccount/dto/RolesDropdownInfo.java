@@ -1,5 +1,6 @@
-package ee.valiit.suvepiduback.domain.account.user.role;
+package ee.valiit.suvepiduback.summerevent.newaccount.dto;
 
+import ee.valiit.suvepiduback.domain.account.user.role.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,10 +1,11 @@
 package ee.valiit.suvepiduback.summerevent.newaccount;
 
-import ee.valiit.suvepiduback.domain.account.user.role.RolesDropdownInfo;
+import ee.valiit.suvepiduback.summerevent.newaccount.dto.RolesDropdownInfo;
+import ee.valiit.suvepiduback.summerevent.newaccount.dto.UserInfo;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -12,13 +13,19 @@ import java.util.List;
 @AllArgsConstructor
 public class NewAccountController {
     private final NewAccountService newAccountService;
+
+    @PostMapping("/new-user")
+    public void addNewUser(@RequestBody @Valid UserInfo userInfo) {
+        newAccountService.addNewUser(userInfo);
+    }
+
+
     @GetMapping("/roles")
     @Operation(summary = "Rollide valiku loomine. Tagastab roleId",
             description = "Süsteemist otsitakse roleId abil rollid")
-
     public List<RolesDropdownInfo> executeRolesDropdown() {
         return newAccountService.executeRolesDropdown();
     }
 
-    
+
 }

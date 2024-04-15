@@ -1,5 +1,6 @@
 package ee.valiit.suvepiduback.domain.account.user.role;
 
+import ee.valiit.suvepiduback.summerevent.newaccount.dto.RolesDropdownInfo;
 import org.mapstruct.*;
 
 import java.util.List;

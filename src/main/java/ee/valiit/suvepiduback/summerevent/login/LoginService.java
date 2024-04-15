@@ -4,6 +4,7 @@ import ee.valiit.suvepiduback.domain.account.user.User;
 import ee.valiit.suvepiduback.domain.account.user.UserMapper;
 import ee.valiit.suvepiduback.domain.account.user.UserRepository;
 import ee.valiit.suvepiduback.infrastructure.validation.ValidationService;
+import ee.valiit.suvepiduback.summerevent.Status;
 import ee.valiit.suvepiduback.summerevent.login.dto.LoginResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class LoginService {
 
 
     public LoginResponse login(String username, String password) {
-        Optional<User> optionalUser = userRepository.findOptionalUserBy(username, password, "A");
+        Optional<User> optionalUser = userRepository.findOptionalUserBy(username, password, Status.ACTIVE);
         return userMapper.toLoginResponse(ValidationService.getValidExistingUser(optionalUser));
     }
 
