@@ -15,13 +15,15 @@ public class AccountController {
     private final AccountService accountService;
 
     @PostMapping("/account/user")
-    @Operation(summary = "Uue tavakasutaja lisamine.",
+    @Operation(summary = "Uue tavakasutaja konto lisamine.",
             description = "Süsteemi lisatakse uus kasutaja roleId, username ja password abil.")
     public void addNewUser(@RequestBody @Valid UserInfo userInfo) {
         accountService.addNewUser(userInfo);
     }
 
     @PostMapping("/account/business")
+    @Operation(summary = "Uue korraldaja konto lisamine.",
+            description = "Süsteemi lisatakse uus kasutaja companyName, registryCode, vatNumber, phone, email abil.")
     public void addNewBusiness(@RequestBody BusinessInfo businessInfo) {
         accountService.addNewBusiness(businessInfo);
     }

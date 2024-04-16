@@ -18,11 +18,10 @@ public class AccountService {
     private final UserRepository userRepository;
     private final BusinessRepository businessRepository;
 
-
     private final UserMapper userMapper;
     private final BusinessMapper businessMapper;
 
-      public void addNewUser(UserInfo userInfo) {
+    public void addNewUser(UserInfo userInfo) {
         createAndSaveUser(userInfo);
     }
 
@@ -35,7 +34,7 @@ public class AccountService {
     @Transactional
     public void addNewBusiness(BusinessInfo businessInfo) {
         User user = createAndSaveUser(businessInfo);
-        Business business = businessMapper.toEntity(businessInfo);
+        Business business = businessMapper.toBusiness(businessInfo);
         business.setUser(user);
         businessRepository.save(business);
     }

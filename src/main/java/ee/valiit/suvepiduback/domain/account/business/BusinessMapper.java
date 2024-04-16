@@ -13,6 +13,6 @@ public interface BusinessMapper {
     @Mapping(source = "phone", target = "phone")
     @Mapping(source = "email", target = "email")
     @Mapping(constant = Status.ACTIVE, target = "status")
-    Business toEntity(BusinessInfo businessInfo);
+    Business toBusiness(BusinessInfo businessInfo);
 
 }
