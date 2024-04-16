@@ -27,21 +27,24 @@ public class Business {
     @Column(name = "company_name", nullable = false, length = 50)
     private String companyName;
 
+    @Size(max = 50)
     @NotNull
-    @Column(name = "phone", nullable = false)
-    private Integer phone;
+    @Column(name = "phone", nullable = false, length = 50)
+    private String phone;
 
     @Size(max = 50)
     @NotNull
     @Column(name = "email", nullable = false, length = 50)
     private String email;
 
+    @Size(max = 50)
     @NotNull
-    @Column(name = "registry_code", nullable = false)
-    private Integer registryCode;
+    @Column(name = "registry_code", nullable = false, length = 50)
+    private String registryCode;
 
-    @Column(name = "vat_number")
-    private Integer vatNumber;
+    @Size(max = 50)
+    @Column(name = "vat_number", length = 50)
+    private String vatNumber;
 
     @NotNull
     @Column(name = "status", nullable = false, length = Integer.MAX_VALUE)

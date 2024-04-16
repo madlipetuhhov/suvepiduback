@@ -1,4 +1,4 @@
-package ee.valiit.suvepiduback.summerevent.newaccount.dto;
+package ee.valiit.suvepiduback.summerevent.account.dto;
 
 import ee.valiit.suvepiduback.domain.account.user.User;
 import lombok.AllArgsConstructor;

@@ -2,7 +2,7 @@ package ee.valiit.suvepiduback.domain.account.user;
 
 import ee.valiit.suvepiduback.summerevent.Status;
 import ee.valiit.suvepiduback.summerevent.login.dto.LoginResponse;
-import ee.valiit.suvepiduback.summerevent.newaccount.dto.UserInfo;
+import ee.valiit.suvepiduback.summerevent.account.dto.UserInfo;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)

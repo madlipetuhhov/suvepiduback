@@ -8,10 +8,10 @@ CREATE TABLE business
     id            serial      NOT NULL,
     user_id       int         NOT NULL,
     company_name  varchar(50) NOT NULL,
-    phone         int         NOT NULL,
+    phone         varchar(50) NOT NULL,
     email         varchar(50) NOT NULL,
-    registry_code int         NOT NULL,
-    vat_number    int         NULL,
+    registry_code varchar(50) NOT NULL,
+    vat_number    varchar(50) NULL,
     status        char(1)     NOT NULL,
     CONSTRAINT ID PRIMARY KEY (id)
 );
