@@ -20,10 +20,8 @@ public class EventService {
 
 
     public void addNewMainEvent(MainEventInfo mainEventInfo) {
-        // otsi businessId abil ylesse business objekt
         Business business = businessRepository.getReferenceById(mainEventInfo.getBusinessId());
         MainEvent mainEvent = mainEventMapper.toMainEvent(mainEventInfo);
-        // pane mainEvnitle business kylge
         mainEvent.setBusiness(business);
         mainEventRepository.save(mainEvent);
     }
