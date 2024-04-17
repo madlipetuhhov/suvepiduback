@@ -17,6 +17,11 @@ public class MainEvent {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "business_id", nullable = false)
+    private Business business;
+
     @Size(max = 50)
     @NotNull
     @Column(name = "title", nullable = false, length = 50)
@@ -35,9 +40,5 @@ public class MainEvent {
     @Column(name = "status", nullable = false, length = Integer.MAX_VALUE)
     private String status;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "business_id", nullable = false)
-    private Business business;
 
 }

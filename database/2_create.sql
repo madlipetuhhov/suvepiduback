@@ -89,11 +89,11 @@ CREATE TABLE feature
 CREATE TABLE main_event
 (
     id          serial       NOT NULL,
+    business_id int          NOT NULL,
     title       varchar(50)  NOT NULL,
     description varchar(255) NOT NULL,
     image_data  bytea        NOT NULL,
     status      char(1)      NOT NULL,
-    business_id int          NOT NULL,
     CONSTRAINT main_event_pk PRIMARY KEY (id)
 );
 

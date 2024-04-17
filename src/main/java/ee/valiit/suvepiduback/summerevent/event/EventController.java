@@ -16,7 +16,7 @@ public class EventController {
     @PostMapping("/event/main")
     @Operation(summary = "Uue sündmuse lisamine.",
             description = "Süsteemi lisatakse uus sündmus koos title, description ja imageData'ga.")
-    public void addNewMainEvent(@RequestBody @Valid MainEventInfo mainEventInfo) {
+    public void addNewMainEvent(@RequestBody MainEventInfo mainEventInfo) {
         eventService.addNewMainEvent(mainEventInfo);
     }
 

@@ -10,12 +10,15 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class EventService {
+
 private final MainEventRepository mainEventRepository;
 private final MainEventMapper mainEventMapper;
 
 
     public void addNewMainEvent(MainEventInfo mainEventInfo) {
+        // otsi businessId abil ylesse business objekt
         MainEvent mainEvent = mainEventMapper.toMainEvent(mainEventInfo);
+        // pane mainEvnitle business kylge
         mainEventRepository.save(mainEvent);
     }
 }
