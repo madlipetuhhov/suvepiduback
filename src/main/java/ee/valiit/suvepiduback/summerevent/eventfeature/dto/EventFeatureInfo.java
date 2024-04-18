@@ -1,4 +1,4 @@
-package ee.valiit.suvepiduback.summerevent.eventcategory.dto;
+package ee.valiit.suvepiduback.summerevent.eventfeature.dto;
 
 import ee.valiit.suvepiduback.domain.event.mainevent.eventfeature.EventFeature;
 import lombok.AllArgsConstructor;

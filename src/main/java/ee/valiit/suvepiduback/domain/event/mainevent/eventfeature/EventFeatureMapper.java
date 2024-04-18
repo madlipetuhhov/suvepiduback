@@ -1,6 +1,6 @@
 package ee.valiit.suvepiduback.domain.event.mainevent.eventfeature;
 
-import ee.valiit.suvepiduback.summerevent.eventcategory.dto.EventFeatureInfo;
+import ee.valiit.suvepiduback.summerevent.eventfeature.dto.EventFeatureInfo;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
