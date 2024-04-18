@@ -13,9 +13,9 @@ import java.util.List;
 public class FeatureController {
     private final FeatureService featureService;
 
-    @GetMapping("/event/feature")
-    @Operation(summary = "Võimaluste valiku loomine. Tagastab featureId.",
-            description = "Süsteemist otsitakse featureId abil võimalused (featureName).")
+    @GetMapping("/feature")
+    @Operation(summary = "Võimaluste valiku loomine.",
+            description = "Süsteemist otsitakse võimalused (featureName) ja tagastab võimaluste massiivi.")
     public List<FeatureInfo> executeFeaturesList() {
         return featureService.executeFeaturesList();
     }

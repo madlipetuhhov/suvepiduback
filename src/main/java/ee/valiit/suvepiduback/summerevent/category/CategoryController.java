@@ -13,9 +13,9 @@ import java.util.List;
 public class CategoryController {
     private final CategoryService categoryService;
 
-    @GetMapping("/event/category")
-    @Operation(summary = "Võimaluste valiku loomine. Tagastab featureId.",
-            description = "Süsteemist otsitakse featureId abil võimalused (featureName).")
+    @GetMapping("/category")
+    @Operation(summary = "Kategooriate valiku loomine.",
+            description = "Süsteemist otsitakse kategooriad (categoryName) ja tagastab kategooriate massiivi.")
     public List<CategoryInfo> executeCategoriesList() {
         return categoryService.executeCategoriesList();
     }

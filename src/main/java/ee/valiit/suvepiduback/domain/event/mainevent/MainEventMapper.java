@@ -1,7 +1,7 @@
 package ee.valiit.suvepiduback.domain.event.mainevent;
 
 import ee.valiit.suvepiduback.summerevent.Status;
-import ee.valiit.suvepiduback.summerevent.event.dto.MainEventInfo;
+import ee.valiit.suvepiduback.summerevent.mainevent.dto.MainEventInfo;
 import ee.valiit.suvepiduback.util.StringConverter;
 import org.mapstruct.*;
 
