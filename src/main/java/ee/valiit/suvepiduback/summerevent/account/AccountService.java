@@ -25,17 +25,17 @@ public class AccountService {
         createAndSaveUser(userInfo);
     }
 
-    private User createAndSaveUser(UserInfo userInfo) {
-        User user = userMapper.toUser(userInfo);
-        userRepository.save(user);
-        return user;
-    }
-
     @Transactional
     public void addNewBusiness(BusinessInfo businessInfo) {
         User user = createAndSaveUser(businessInfo);
         Business business = businessMapper.toBusiness(businessInfo);
         business.setUser(user);
         businessRepository.save(business);
+    }
+
+    private User createAndSaveUser(UserInfo userInfo) {
+        User user = userMapper.toUser(userInfo);
+        userRepository.save(user);
+        return user;
     }
 }
