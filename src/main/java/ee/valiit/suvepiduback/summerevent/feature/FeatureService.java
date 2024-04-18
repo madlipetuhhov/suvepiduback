@@ -15,8 +15,8 @@ public class FeatureService {
     private final FeatureRepository featureRepository;
     private final FeatureMapper featureMapper;
 
-    public List<FeatureInfo> executeFeaturesList(Integer featureId) {
-        List<Feature> features = featureRepository.findFeaturesAscBy(featureId);
+    public List<FeatureInfo> executeFeaturesList() {
+        List<Feature> features = featureRepository.findAll();
         return featureMapper.toFeatureInfos(features);
     }
 }

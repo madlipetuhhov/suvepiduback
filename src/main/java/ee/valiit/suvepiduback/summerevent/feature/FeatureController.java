@@ -16,8 +16,8 @@ public class FeatureController {
     @GetMapping("/event/feature")
     @Operation(summary = "Võimaluste valiku loomine. Tagastab featureId.",
             description = "Süsteemist otsitakse featureId abil võimalused (featureName).")
-    public List<FeatureInfo> executeFeaturesList(Integer featureId) {
-        return featureService.executeFeaturesList(featureId);
+    public List<FeatureInfo> executeFeaturesList() {
+        return featureService.executeFeaturesList();
     }
 
 }
