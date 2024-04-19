@@ -23,7 +23,7 @@ public class TicketTypeService {
     public void addNewTicketTypes(Integer mainEventId, TicketTypeInfo ticketTypeInfo) {
         MainEvent mainEvent = mainEventRepository.getReferenceById(mainEventId);
         TicketType ticketType = ticketTypeMapper.toTicketType(ticketTypeInfo);
-        mainEvent.setId(mainEventId);
+        ticketType.setMainEvent(mainEvent);
         ticketTypeRepository.save(ticketType);
     }
 
