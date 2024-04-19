@@ -16,4 +16,5 @@ import java.io.Serializable;
 public class FeatureInfo implements Serializable {
     private Integer featureId;
     private String featureName;
+    private Boolean isAvailable = false;
 }

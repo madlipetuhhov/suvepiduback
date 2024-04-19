@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class EventCategoryController {
     private final EventCategoryService eventCategoryService;
-    @PostMapping("/event/category/{mainEventId}")
+    @PostMapping("/event/category?mainEventId={mainEventId}")
     @Operation(summary = "Uuele sündmusele kategooriate lisamine. Tagastab mainEventId??. ",
             description = "Süsteemi lisatakse sündmusele juurde kategooriad mainEventId abil.")
     public void addNewCategory(@RequestBody EventCategoryInfo eventCategoryInfo) {
