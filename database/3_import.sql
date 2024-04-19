@@ -22,3 +22,18 @@ INSERT INTO suvepidu.category (id, name) VALUES (default, 'festival');
 INSERT INTO suvepidu.category (id, name) VALUES (default, 'sport');
 INSERT INTO suvepidu.category (id, name) VALUES (default, 'loodus');
 
+INSERT INTO suvepidu.county (id, county) VALUES (default, 'Harju maakond');
+INSERT INTO suvepidu.county (id, county) VALUES (default, 'Hiiu maakond');
+INSERT INTO suvepidu.county (id, county) VALUES (default, 'Ida-Viru maakond');
+INSERT INTO suvepidu.county (id, county) VALUES (default, 'Jõgeva maakond');
+INSERT INTO suvepidu.county (id, county) VALUES (default, 'Järva maakond');
+INSERT INTO suvepidu.county (id, county) VALUES (default, 'Lääne-Viru maakond');
+INSERT INTO suvepidu.county (id, county) VALUES (default, 'Lääne maakond');
+INSERT INTO suvepidu.county (id, county) VALUES (default, 'Põlva maakond');
+INSERT INTO suvepidu.county (id, county) VALUES (default, 'Pärnu maakond');
+INSERT INTO suvepidu.county (id, county) VALUES (default, 'Rapla maakond');
+INSERT INTO suvepidu.county (id, county) VALUES (default, 'Saare maakond');
+INSERT INTO suvepidu.county (id, county) VALUES (default, 'Tartu maakond');
+INSERT INTO suvepidu.county (id, county) VALUES (default, 'Valga maakond');
+INSERT INTO suvepidu.county (id, county) VALUES (default, 'Viljandi maakond');
+INSERT INTO suvepidu.county (id, county) VALUES (default, 'Võru maakond');
