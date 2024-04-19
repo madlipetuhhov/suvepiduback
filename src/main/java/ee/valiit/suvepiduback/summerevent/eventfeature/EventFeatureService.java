@@ -20,17 +20,17 @@ public class EventFeatureService {
     private final MainEventRepository mainEventRepository;
     private final FeatureRepository featureRepository;
 
-    public void addNewFeature(Integer mainEventId, List<FeatureInfo> featureInfos) {
+    public void addNewFeatures(Integer mainEventId, List<FeatureInfo> featureInfos) {
         MainEvent mainEvent = mainEventRepository.getReferenceById(mainEventId);
         createAndSaveEventFeatures(mainEvent, featureInfos);
     }
 
     private void createAndSaveEventFeatures(MainEvent mainEvent, List<FeatureInfo> featureInfos) {
-        List<EventFeature> eventFeatures = createEventFeatures(featureInfos, mainEvent);
+        List<EventFeature> eventFeatures = createEventFeatures(mainEvent, featureInfos);
         eventFeatureRepository.saveAll(eventFeatures);
     }
 
-    private List<EventFeature> createEventFeatures(List<FeatureInfo> featureInfos, MainEvent mainEvent) {
+    private List<EventFeature> createEventFeatures(MainEvent mainEvent, List<FeatureInfo> featureInfos) {
         List<EventFeature> eventFeatures = new ArrayList<>();
         for (FeatureInfo featureInfo : featureInfos) {
             if (featureInfo.getIsAvailable()) {

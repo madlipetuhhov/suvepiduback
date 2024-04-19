@@ -1,6 +1,5 @@
 package ee.valiit.suvepiduback.summerevent.eventfeature;
 
-import ee.valiit.suvepiduback.summerevent.eventfeature.dto.EventFeatureInfo;
 import ee.valiit.suvepiduback.summerevent.feature.dto.FeatureInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
@@ -17,10 +16,10 @@ public class EventFeatureController {
     private final EventFeatureService eventFeatureService;
 
     @PostMapping("/event/features/")
-    @Operation(summary = "Uuele sündmusele võimaluste lisamine. Tagastab mainEventId??. ",
+    @Operation(summary = "Uuele sündmusele võimaluste lisamine. Tagastab mainEventId. ",
             description = "Süsteemi lisatakse sündmusele juurde võimalused mainEventId abil.")
     public void addNewFeatures(@RequestParam Integer mainEventId, @RequestBody List<FeatureInfo> featureInfos) {
-        eventFeatureService.addNewFeature(mainEventId,featureInfos);
+        eventFeatureService.addNewFeatures(mainEventId,featureInfos);
     }
 
 }
