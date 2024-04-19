@@ -14,6 +14,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MainEventInfo implements Serializable {
+//    private Integer mainEventId;
     private Integer businessId;
     private String title;
     private String description;
