@@ -1,6 +1,5 @@
 package ee.valiit.suvepiduback.summerevent.eventfeature;
 
-import ee.valiit.suvepiduback.summerevent.eventfeature.dto.EventFeatureInfo;
 import ee.valiit.suvepiduback.summerevent.feature.dto.FeatureInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
