@@ -17,7 +17,6 @@ import java.util.List;
 public class TicketTypeService {
     private final MainEventRepository mainEventRepository;
     private final TicketTypeRepository ticketTypeRepository;
-
     private final TicketTypeMapper ticketTypeMapper;
 
     public void addNewTicketTypes(Integer mainEventId, TicketTypeInfo ticketTypeInfo) {
