@@ -16,9 +16,9 @@ public class MainEventController {
     @PostMapping("/event/main")
     @Operation(summary = "Uue sündmuse lisamine. Tagastab mainEventId ",
             description = "Süsteemi lisatakse uus sündmus koos title, description ja imageData'ga.")
-    public Integer addNewMainEvent(@RequestBody MainEventInfo mainEventInfo) {
+    public Integer addNewMainEvent(@RequestParam Integer businessId, @RequestBody MainEventInfo mainEventInfo) {
         // siin nt NewMainEventInfo DTO ilma ID-ta
-        return mainEventService.addNewMainEvent(mainEventInfo);
+        return mainEventService.addNewMainEvent(businessId, mainEventInfo);
     }
 
     // siin tagastad DTO objekti, millel on ID küljes

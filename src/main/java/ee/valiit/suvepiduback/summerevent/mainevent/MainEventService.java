@@ -21,8 +21,8 @@ public class MainEventService {
     private final BusinessRepository businessRepository;
     private final MainEventMapper mainEventMapper;
 
-    public Integer addNewMainEvent(MainEventInfo mainEventInfo) {
-        Business business = businessRepository.getReferenceById(mainEventInfo.getBusinessId());
+    public Integer addNewMainEvent(Integer businessId, MainEventInfo mainEventInfo) {
+        Business business = businessRepository.getReferenceById(businessId);
         MainEvent mainEvent = mainEventMapper.toMainEvent(mainEventInfo);
         mainEvent.setBusiness(business);
         mainEventRepository.save(mainEvent);
@@ -38,6 +38,7 @@ public class MainEventService {
         List<MainEvent> mainEvents = mainEventRepository.findMainEventsBy(businessId, Status.ACTIVE);
         return mainEventMapper.toMainEventInfos(mainEvents);
     }
+
 
     public void updateMainEvent(MainEventInfoExtended mainEventInfoExtended) {
         MainEvent mainEvent = mainEventRepository.getReferenceById(mainEventInfoExtended.getMainEventId());
