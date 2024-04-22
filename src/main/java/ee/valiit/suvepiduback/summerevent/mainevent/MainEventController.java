@@ -42,16 +42,16 @@ public class MainEventController {
         // in mainEventService.getMainEvents add relevant repository code
         return mainEventService.getMainEvents(businessId);
     }
-//
-//    // siin tagastad uuendatud DTO objekti , millel on ID küljes
-//    @PutMapping("/event/main")
-//    public MainEventInfo updateMainEvent(@RequestBody MainEventInfo mainEventInfo) {
-//        // siin nt UpdateMainEventInfo DTO koos ID-ga
-//        // update MainEventInfo object
-//        // add new method in service to update data
-//        // in mainEventService.updateMainEvent add relevant repository code
-//        return mainEventService.updateMainEvent(mainEventInfo);
-//    }
+
+    // siin tagastad uuendatud DTO objekti , millel on ID küljes
+    @PutMapping("/event/main")
+    public void updateMainEvent(@RequestBody MainEventInfoExtended mainEventInfoExtended) {
+        // siin nt UpdateMainEventInfo DTO koos ID-ga
+        // update MainEventInfo object
+        // add new method in service to update data
+        // in mainEventService.updateMainEvent add relevant repository code
+        mainEventService.updateMainEvent(mainEventInfoExtended);
+    }
 //
 //    // siin tagastad kustutatud objekti ID, aga ainult selleks, et kontrollida frontendis kas see õnnestus
 //    @DeleteMapping("/event/main")

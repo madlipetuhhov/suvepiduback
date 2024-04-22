@@ -42,5 +42,10 @@ public class MainEventService {
     }
 
 
+    public void updateMainEvent(MainEventInfoExtended mainEventInfoExtended) {
+        MainEvent mainEvent = mainEventRepository.getReferenceById(mainEventInfoExtended.getMainEventId());
+        mainEventMapper.editMainEvent(mainEventInfoExtended, mainEvent);
+        mainEventRepository.save(mainEvent);
+    }
 }
 
