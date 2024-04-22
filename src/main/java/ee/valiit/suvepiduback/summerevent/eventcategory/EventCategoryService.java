@@ -21,8 +21,8 @@ public class EventCategoryService {
     private final CategoryRepository categoryRepository;
 
 
-    public void addNewCategory(Integer mainEvnetId, List<CategoryInfo> categoryInfos) {
-        MainEvent mainEvent = mainEventRepository.getReferenceById(mainEvnetId);
+    public void addNewCategory(Integer mainEventId, List<CategoryInfo> categoryInfos) {
+        MainEvent mainEvent = mainEventRepository.getReferenceById(mainEventId);
         createAndSaveEventCategories(mainEvent, categoryInfos);
     }
 

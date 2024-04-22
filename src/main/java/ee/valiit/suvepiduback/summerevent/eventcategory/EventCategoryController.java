@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 public class EventCategoryController {
     private final EventCategoryService eventCategoryService;
-    @PostMapping("/event/features/")
+    @PostMapping("/event/categories/")
     @Operation(summary = "Uuele sündmusele kategooriate lisamine. Tagastab mainEventId??. ",
             description = "Süsteemi lisatakse sündmusele juurde kategooriad mainEventId abil.")
     public void addNewCategory(@RequestParam Integer mainEventId, @RequestBody List<CategoryInfo> categoryInfos) {
