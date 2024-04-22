@@ -19,9 +19,7 @@ public class MainEventService {
 
     private final MainEventRepository mainEventRepository;
     private final BusinessRepository businessRepository;
-
     private final MainEventMapper mainEventMapper;
-
 
     public Integer addNewMainEvent(MainEventInfo mainEventInfo) {
         Business business = businessRepository.getReferenceById(mainEventInfo.getBusinessId());
@@ -41,11 +39,17 @@ public class MainEventService {
         return mainEventMapper.toMainEventInfos(mainEvents);
     }
 
-
     public void updateMainEvent(MainEventInfoExtended mainEventInfoExtended) {
         MainEvent mainEvent = mainEventRepository.getReferenceById(mainEventInfoExtended.getMainEventId());
         mainEventMapper.editMainEvent(mainEventInfoExtended, mainEvent);
         mainEventRepository.save(mainEvent);
+    }
+
+    public Integer removeMainEvent(Integer mainEventId) {
+        MainEvent mainEvent = mainEventRepository.getReferenceById(mainEventId);
+        mainEvent.setStatus(Status.DEACTIVE);
+        mainEventRepository.save(mainEvent);
+        return mainEventId;
     }
 }
 
