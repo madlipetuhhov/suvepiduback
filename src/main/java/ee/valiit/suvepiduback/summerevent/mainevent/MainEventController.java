@@ -23,6 +23,8 @@ public class MainEventController {
 
     // siin tagastad DTO objekti, millel on ID küljes
     @GetMapping("/event/main")
+    @Operation(summary = "Ühe sündmuse toomine andmebaasist.",
+            description = "Andmebaasist tuuakse üks sündmus mainEventId abil.")
     public MainEventInfoExtended getMainEvent(@RequestParam Integer mainEventId) {
         // get MainEventInfo object by ID
         // add new method in service to get data
@@ -32,6 +34,8 @@ public class MainEventController {
 
     // siin tagastad DTO objekti listi objektidest, millel on ID-d küljes
     @GetMapping("/events/main")
+    @Operation(summary = "Kõikide sündmuste toomine andmebaasist vastava ettevõtte kohta.",
+            description = "Andmebaasist tuuakse vastava ettevõtte kõik sündmused businessId abil.")
     public List<MainEventInfoExtended> getMainEvents(@RequestParam Integer businessId) {
         // get list of MainEventInfo objects by business ID to only show relevant events
         // add new method in service to get data
