@@ -1,7 +1,7 @@
 package ee.valiit.suvepiduback.summerevent.mainevent;
 
-import ee.valiit.suvepiduback.domain.event.mainevent.MainEvent;
 import ee.valiit.suvepiduback.summerevent.mainevent.dto.MainEventInfo;
+import ee.valiit.suvepiduback.summerevent.mainevent.dto.MainEventInfoExtended;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -18,26 +18,26 @@ public class MainEventController {
             description = "Süsteemi lisatakse uus sündmus koos title, description ja imageData'ga.")
     public Integer addNewMainEvent(@RequestBody MainEventInfo mainEventInfo) {
         // siin nt NewMainEventInfo DTO ilma ID-ta
-       return mainEventService.addNewMainEvent(mainEventInfo);
+        return mainEventService.addNewMainEvent(mainEventInfo);
     }
 
     // siin tagastad DTO objekti, millel on ID küljes
-//    @GetMapping("/event/main")
-//    public MainEventInfo getMainEvent(@RequestParam Integer eventId) {
-//        // get MainEventInfo object by ID
-//        // add new method in service to get data
-//        // in mainEventService.getMainEvent add relevant repository code
-//        return mainEventService.getMainEvent(eventId);
-//    }
-//
-//    // siin tagastad DTO objekti listi objektidest, millel on ID-d küljes
-//    @GetMapping("/events/main")
-//    public List<MainEventInfo> getMainEvents(@RequestParam Integer businessId) {
-//        // get list of MainEventInfo objects by business ID to only show relevant events
-//        // add new method in service to get data
-//        // in mainEventService.getMainEvents add relevant repository code
-//        return mainEventService.getMainEvents(businessId);
-//    }
+    @GetMapping("/event/main")
+    public MainEventInfoExtended getMainEvent(@RequestParam Integer mainEventId) {
+        // get MainEventInfo object by ID
+        // add new method in service to get data
+        // in mainEventService.getMainEvent add relevant repository code
+        return mainEventService.getMainEvent(mainEventId);
+    }
+
+    // siin tagastad DTO objekti listi objektidest, millel on ID-d küljes
+    @GetMapping("/events/main")
+    public List<MainEventInfoExtended> getMainEvents(@RequestParam Integer businessId) {
+        // get list of MainEventInfo objects by business ID to only show relevant events
+        // add new method in service to get data
+        // in mainEventService.getMainEvents add relevant repository code
+        return mainEventService.getMainEvents(businessId);
+    }
 //
 //    // siin tagastad uuendatud DTO objekti , millel on ID küljes
 //    @PutMapping("/event/main")
