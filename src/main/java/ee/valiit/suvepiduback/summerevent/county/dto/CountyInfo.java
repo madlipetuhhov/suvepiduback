@@ -1,5 +1,6 @@
-package ee.valiit.suvepiduback.domain.event.eventdetail.county;
+package ee.valiit.suvepiduback.summerevent.county.dto;
 
+import ee.valiit.suvepiduback.domain.event.eventdetail.county.County;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

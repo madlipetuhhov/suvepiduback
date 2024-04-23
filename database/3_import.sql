@@ -37,3 +37,7 @@ INSERT INTO suvepidu.county (id, county) VALUES (default, 'Tartu maakond');
 INSERT INTO suvepidu.county (id, county) VALUES (default, 'Valga maakond');
 INSERT INTO suvepidu.county (id, county) VALUES (default, 'Viljandi maakond');
 INSERT INTO suvepidu.county (id, county) VALUES (default, 'Võru maakond');
+
+INSERT INTO suvepidu.main_event (id, business_id, title, description, image_data, status) VALUES (default, 1, 'Suvegrill 2024', 'description bla bla', 'asdasada', 'A');
+
+INSERT INTO suvepidu.event_detail (id, main_event_id, county_id, date, start_time, end_time, address, longitude, latitude) VALUES (1, 1, 1, '2024-04-08', '13:44:12', '13:44:15', 'Aadress', 12.000000, 21.000000);

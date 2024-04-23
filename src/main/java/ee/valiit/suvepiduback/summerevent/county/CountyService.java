@@ -1,5 +1,9 @@
-package ee.valiit.suvepiduback.domain.event.eventdetail.county;
+package ee.valiit.suvepiduback.summerevent.county;
 
+import ee.valiit.suvepiduback.domain.event.eventdetail.county.County;
+import ee.valiit.suvepiduback.summerevent.county.dto.CountyInfo;
+import ee.valiit.suvepiduback.domain.event.eventdetail.county.CountyMapper;
+import ee.valiit.suvepiduback.domain.event.eventdetail.county.CountyRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

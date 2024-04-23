@@ -1,5 +1,6 @@
-package ee.valiit.suvepiduback.domain.event.eventdetail.county;
+package ee.valiit.suvepiduback.summerevent.county;
 
+import ee.valiit.suvepiduback.summerevent.county.dto.CountyInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
