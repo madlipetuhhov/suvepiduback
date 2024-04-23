@@ -31,12 +31,12 @@ public class MainEventService {
 
     public MainEventInfoExtended getMainEvent(Integer mainEventId) {
         MainEvent mainEvent = mainEventRepository.findMainEventBy(mainEventId, Status.ACTIVE);
-        return mainEventMapper.toMainEventInfo(mainEvent);
+        return mainEventMapper.toMainEventInfoExtended(mainEvent);
     }
 
     public List<MainEventInfoExtended> getMainEvents(Integer businessId) {
         List<MainEvent> mainEvents = mainEventRepository.findMainEventsBy(businessId, Status.ACTIVE);
-        return mainEventMapper.toMainEventInfos(mainEvents);
+        return mainEventMapper.toMainEventInfosExtended(mainEvents);
     }
 
 

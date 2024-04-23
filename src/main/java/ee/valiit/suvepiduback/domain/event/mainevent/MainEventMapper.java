@@ -21,15 +21,15 @@ public interface MainEventMapper {
     @Mapping(source = "title", target = "title")
     @Mapping(source = "description", target = "description")
     @Mapping(expression = "java(StringConverter.bytesToString(mainEvent.getImageData()))", target = "imageData")
-    MainEventInfoExtended toMainEventInfo(MainEvent mainEvent);
+    MainEventInfoExtended toMainEventInfoExtended(MainEvent mainEvent);
 
-    List<MainEventInfoExtended> toMainEventInfos(List<MainEvent> mainEvents);
+    List<MainEventInfoExtended> toMainEventInfosExtended(List<MainEvent> mainEvents);
 
     @Mapping(target = "id", source = "mainEventId")
     @Mapping(target = "title", source = "title")
     @Mapping(target = "description", source = "description")
     @Mapping(expression = "java(StringConverter.stringToBytes(mainEventInfoExtended.getImageData()))", target = "imageData")
-    MainEvent editMainEvent(MainEventInfoExtended mainEventInfoExtended, @MappingTarget MainEvent mainEvent);
+    void editMainEvent(MainEventInfoExtended mainEventInfoExtended, @MappingTarget MainEvent mainEvent);
 
 
 }

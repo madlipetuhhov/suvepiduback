@@ -20,4 +20,5 @@ public interface EventDetailMapper {
     @Mapping(source = "longitude", target = "longitude")
     @Mapping(source = "latitude", target = "latitude")
     EventDetail toEventDetail(EventDetailInfo eventDetailInfo);
+
 }
