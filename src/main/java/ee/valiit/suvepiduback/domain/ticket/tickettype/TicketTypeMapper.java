@@ -14,6 +14,7 @@ public interface TicketTypeMapper {
     TicketType toTicketType(TicketTypeInfo ticketTypeInfo);
 
     @Mapping(source = "mainEvent.id", target = "mainEventId")
+    @Mapping(source = "id", target = "ticketTypeId")
     @Mapping(source = "name", target = "ticketTypeName")
     @Mapping(source = "price", target = "ticketTypePrice")
     TicketTypeInfoExtended toTicketTypeInfoExtended(TicketType ticketType);

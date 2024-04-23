@@ -16,6 +16,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TicketTypeInfoExtended extends TicketTypeInfo implements Serializable {
+    private Integer ticketTypeId;
     private Integer mainEventId;
 
 }
