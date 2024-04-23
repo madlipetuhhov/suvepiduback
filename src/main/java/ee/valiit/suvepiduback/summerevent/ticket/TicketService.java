@@ -35,4 +35,7 @@ public class TicketService {
 
     }
 
+    public void getEventTicket() {
+
+    }
 }
