@@ -37,8 +37,8 @@ public class TicketTypeController {
     @PutMapping("ticket-type")
     @Operation(summary = "Olemasoleva pileti tüübi andmete muutmine ticketTypeId (query parameetrina) abil.",
             description = "Andmebaasis kirjutatakse üle olemasoleva pileti tüübi andmed.")
-    public void updateTicketType(@RequestParam Integer ticketTypeId, @RequestBody TicketTypeInfoExtended ticketTypeInfoExtended) {
-        ticketTypeService.updateTicketType(ticketTypeId, ticketTypeInfoExtended);
+    public void updateTicketType(@RequestBody TicketTypeInfoExtended ticketTypeInfoExtended) {
+        ticketTypeService.updateTicketType(ticketTypeInfoExtended);
     }
 
 //    Delete meetodit ei saa teha pileti tüübile, sest andmebaasis pole staatust.
