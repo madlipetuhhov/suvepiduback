@@ -17,7 +17,9 @@ public class EventDetailController {
     @PostMapping("/event/detail/")
     @Operation(summary = "Uuele sündmusele detailide lisamine. Tagastab eventDetailId. ",
             description = "Süsteemi lisatakse sündmusele juurde detailid eventDetailId abil.")
-    public void addEventDetail(@RequestBody EventDetailInfo eventDetailInfo) {
-        eventDetailService.addEventDetail(eventDetailInfo);
+    public Integer addEventDetail(@RequestBody EventDetailInfo eventDetailInfo) {
+       return eventDetailService.addEventDetail(eventDetailInfo);
+
     }
+
 }

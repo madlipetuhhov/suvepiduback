@@ -21,17 +21,23 @@ public class EventDetailService {
 
     private final EventDetailMapper eventDetailMapper;
 
-    public EventDetail addEventDetail(EventDetailInfo eventDetailInfo) {
+    public Integer addEventDetail(EventDetailInfo eventDetailInfo) {
         MainEvent mainEvent = mainEventRepository.getReferenceById(eventDetailInfo.getMainEventId());
-        eventDetailInfo.setMainEventId(mainEvent.getId());
+//        eventDetailInfo.setMainEventId(mainEvent.getId());
+//        nii ei tee siin
+
         County county = countyRepository.getReferenceById(eventDetailInfo.getCountyId());
-        eventDetailInfo.setCountyId(county.getId());
+//        eventDetailInfo.setCountyId(county.getId());
+//        nii ei tee siin
+
         EventDetail eventDetail = eventDetailMapper.toEventDetail(eventDetailInfo);
+        eventDetail.setMainEvent(mainEvent);
+        eventDetail.setCounty(county);
         eventDetailRepository.save(eventDetail);
 
-        return eventDetail;
+        return eventDetail.getId();
 
-        // todo: Enne kui hakkad mapperiga tekitama uut objekti eventDetail (entity)
+        // Enne kui hakkad mapperiga tekitama uut objekti eventDetail (entity)
         //  siis pead leidma ülesse sissetulnud foreing keyd kui entity objektid.
         //  Seda saad teha vastavate repositoryde abil
 
