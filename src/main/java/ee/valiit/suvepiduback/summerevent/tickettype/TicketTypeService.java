@@ -19,12 +19,11 @@ public class TicketTypeService {
     private final TicketTypeRepository ticketTypeRepository;
     private final TicketTypeMapper ticketTypeMapper;
 
-    public Integer addNewTicketTypes(Integer mainEventId, TicketTypeInfo ticketTypeInfo) {
+    public void addNewTicketTypes(Integer mainEventId, TicketTypeInfo ticketTypeInfo) {
         MainEvent mainEvent = mainEventRepository.getReferenceById(mainEventId);
         TicketType ticketType = ticketTypeMapper.toTicketType(ticketTypeInfo);
         ticketType.setMainEvent(mainEvent);
         ticketTypeRepository.save(ticketType);
-        return mainEvent.getId();
     }
 
     public TicketTypeInfoExtended getTicketType(Integer ticketTypeId) {

@@ -18,6 +18,7 @@ public class MainEventController {
             description = "Süsteemi lisatakse uus sündmus koos title, description ja imageData'ga.")
     public Integer addNewMainEvent(@RequestParam Integer businessId, @RequestBody MainEventInfo mainEventInfo) {
         // siin nt NewMainEventInfo DTO ilma ID-ta
+//        tagastab mainEventId, et navigeerida frondis featureCategoryRoutile
         return mainEventService.addNewMainEvent(businessId, mainEventInfo);
     }
 
