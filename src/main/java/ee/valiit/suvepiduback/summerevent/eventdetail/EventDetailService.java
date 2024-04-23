@@ -21,8 +21,8 @@ public class EventDetailService {
 
     private final EventDetailMapper eventDetailMapper;
 
-    public Integer addEventDetail(EventDetailInfo eventDetailInfo) {
-        MainEvent mainEvent = mainEventRepository.getReferenceById(eventDetailInfo.getMainEventId());
+    public Integer addEventDetail(Integer mainEventId, EventDetailInfo eventDetailInfo) {
+        MainEvent mainEvent = mainEventRepository.getReferenceById(mainEventId);
 //        eventDetailInfo.setMainEventId(mainEvent.getId());
 //        nii ei tee siin
 
