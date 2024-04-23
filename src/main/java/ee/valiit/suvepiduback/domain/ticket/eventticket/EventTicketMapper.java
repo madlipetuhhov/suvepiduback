@@ -1,14 +1,20 @@
 package ee.valiit.suvepiduback.domain.ticket.eventticket;
 
-import ee.valiit.suvepiduback.summerevent.ticket.dto.TicketAmountsInfo;
+import ee.valiit.suvepiduback.summerevent.Status;
+import ee.valiit.suvepiduback.summerevent.ticket.dto.EventTicketInfo;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface EventTicketMapper {
-    EventTicket toEntity(TicketAmountsInfo ticketAmounts);
 
-    TicketAmountsInfo toDto(EventTicket eventTicket);
+    @Mapping(source = "total", target = "total")
+    @Mapping(source = "available", target = "available")
+    @Mapping(constant = Status.ACTIVE, target = "status")
+    EventTicket toEventTicket(EventTicketInfo eventTicketInfo);
 
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    EventTicket partialUpdate(TicketAmountsInfo ticketAmounts, @MappingTarget EventTicket eventTicket);
+    @Mapping(source = "total", target = "total")
+    @Mapping(source = "available", target = "available")
+    @Mapping(source = "status", target = "status")
+    EventTicketInfo toEventTicketInfo(EventTicket eventTicket);
+
 }
