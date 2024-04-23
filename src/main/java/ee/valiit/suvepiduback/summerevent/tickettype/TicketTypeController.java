@@ -22,9 +22,9 @@ public class TicketTypeController {
 
     @GetMapping("ticket-type")
     @Operation(summary = "Ühe pileti tüübi toomine andmebaasist.",
-            description = "Andmebaasist tuuakse üks pileti tüüp mainEventId abil.")
-    public TicketTypeInfoExtended getTicketType(@RequestParam Integer mainEventId) {
-        return ticketTypeService.getTicketType(mainEventId);
+            description = "Andmebaasist tuuakse üks pileti tüüp ticketTypeId abil.")
+    public TicketTypeInfoExtended getTicketType(@RequestParam Integer ticketTypeId) {
+        return ticketTypeService.getTicketType(ticketTypeId);
     }
 
     @GetMapping("ticket-types")
