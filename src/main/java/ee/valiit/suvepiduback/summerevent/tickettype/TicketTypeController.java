@@ -43,13 +43,5 @@ public class TicketTypeController {
         ticketTypeService.updateTicketType(ticketTypeInfoExtended);
     }
 
-//    Delete meetodit ei saa teha pileti tüübile, sest andmebaasis pole staatust.
-//    @DeleteMapping("ticket-type")
-//    @Operation(summary = "Olemasoleva pileti tüübi eemaldamine ticketTypeId abil.",
-//            description = "Andmebaasist reaalselt pileti tüüpi ei eemaldata, vaid deaktiveeritakse.")
-//    public Integer removeTicketType(@RequestParam Integer ticketTypeId) {
-//        return ticketTypeService.removeTicketType(ticketTypeId);
-//    }
-
 
 }
