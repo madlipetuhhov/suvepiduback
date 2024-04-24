@@ -11,4 +11,5 @@ public interface EventCategoryMapper {
     EventCategory toEventCategory(EventCategoryInfo eventCategoryInfo);
 
 
+
 }

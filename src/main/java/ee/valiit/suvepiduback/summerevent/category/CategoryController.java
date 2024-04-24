@@ -13,7 +13,7 @@ import java.util.List;
 public class CategoryController {
     private final CategoryService categoryService;
 
-    @GetMapping("/category")
+    @GetMapping("/categories")
     @Operation(summary = "Kategooriate valiku loomine.",
             description = "Süsteemist otsitakse kategooriad (categoryName) ja tagastab kategooriate massiivi.")
     public List<CategoryInfo> executeCategoriesList() {
