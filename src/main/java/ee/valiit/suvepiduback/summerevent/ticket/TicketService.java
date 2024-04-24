@@ -8,8 +8,11 @@ import ee.valiit.suvepiduback.domain.ticket.eventticket.EventTicketRepository;
 import ee.valiit.suvepiduback.domain.ticket.tickettype.TicketType;
 import ee.valiit.suvepiduback.domain.ticket.tickettype.TicketTypeRepository;
 import ee.valiit.suvepiduback.summerevent.ticket.dto.EventTicketInfo;
+import ee.valiit.suvepiduback.summerevent.ticket.dto.EventTicketRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @AllArgsConstructor
 @Service
@@ -21,11 +24,11 @@ public class TicketService {
     private final EventTicketRepository eventTicketRepository;
     private final EventTicketMapper eventTicketMapper;
 
-    public void addNewTicket(EventTicketInfo eventTicketInfo) {
+    public void addNewTicket(EventTicketRequest eventTicketRequest) {
 
-        EventDetail eventDetail = eventDetailRepository.getReferenceById(eventTicketInfo.getEventDetailId());
-        TicketType ticketType = ticketTypeRepository.getReferenceById(eventTicketInfo.getTicketTypeId());
-        EventTicket eventTicket = eventTicketMapper.toEventTicket(eventTicketInfo);
+        EventDetail eventDetail = eventDetailRepository.getReferenceById(eventTicketRequest.getEventDetailId());
+        TicketType ticketType = ticketTypeRepository.getReferenceById(eventTicketRequest.getTicketTypeId());
+        EventTicket eventTicket = eventTicketMapper.toEventTicket(eventTicketRequest);
         eventTicket.setEventDetail(eventDetail);
         eventTicket.setTicketType(ticketType);
         eventTicketRepository.save(eventTicket);
@@ -34,7 +37,9 @@ public class TicketService {
         //return eventTicket.getId();
     }
 
-    public void getEventTicket() {
 
+    public List<EventTicketInfo> getEventTickets(Integer eventDetailId) {
+        List<EventTicket> eventTickets = eventTicketRepository.findEventTicketsBy(eventDetailId);
+        return eventTicketMapper.toEventTicketInfos(eventTickets);
     }
 }

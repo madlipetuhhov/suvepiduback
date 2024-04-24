@@ -14,14 +14,12 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EventTicketInfo implements Serializable {
-
+public class EventTicketRequest implements Serializable {
     @NotNull
-    private String ticketTypeName;
+    private Integer eventDetailId;
+    @NotNull
+    private Integer ticketTypeId;
     @NotNull
     private Integer total;
-    @NotNull
-    private Integer available;
-    @NotNull
-    private String status;
+
 }
