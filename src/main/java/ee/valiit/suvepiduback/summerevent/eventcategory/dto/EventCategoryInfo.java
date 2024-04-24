@@ -14,6 +14,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EventCategoryInfo implements Serializable {
-    private Integer mainEventId;
     private Integer categoryId;
+    private Integer mainEventId;
+    private String categoryName;
 }

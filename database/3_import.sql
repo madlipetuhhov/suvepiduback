@@ -97,5 +97,18 @@ VALUES (default, 1, 'Täiskasvanud', 10);
 INSERT INTO suvepidu.ticket_type (id, main_event_id, name, price)
 VALUES (default, 1, 'Lapsed', 0);
 
+INSERT INTO suvepidu.event_category (id, main_event_id, category_id) VALUES (default, 1, 1);
+INSERT INTO suvepidu.event_category (id, main_event_id, category_id) VALUES (default, 1, 4);
+INSERT INTO suvepidu.event_category (id, main_event_id, category_id) VALUES (default, 2, 3);
+INSERT INTO suvepidu.event_category (id, main_event_id, category_id) VALUES (default, 2, 5);
+
+
+INSERT INTO suvepidu.event_feature (id, main_event_id, feature_id) VALUES (1, default, 1);
+INSERT INTO suvepidu.event_feature (id, main_event_id, feature_id) VALUES (2, default, 1);
+INSERT INTO suvepidu.event_feature (id, main_event_id, feature_id) VALUES (3, default, 3);
+INSERT INTO suvepidu.event_feature (id, main_event_id, feature_id) VALUES (4, default, 5);
+
+
+
 
 

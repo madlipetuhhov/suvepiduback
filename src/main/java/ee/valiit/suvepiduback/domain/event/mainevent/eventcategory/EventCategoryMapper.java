@@ -3,13 +3,16 @@ package ee.valiit.suvepiduback.domain.event.mainevent.eventcategory;
 import ee.valiit.suvepiduback.summerevent.eventcategory.dto.EventCategoryInfo;
 import org.mapstruct.*;
 
+import java.util.List;
+
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface EventCategoryMapper {
 
-    @Mapping(source = "mainEventId", target = "mainEvent.id")
-    @Mapping(source = "categoryId", target = "category.id")
-    EventCategory toEventCategory(EventCategoryInfo eventCategoryInfo);
+    @Mapping(source = "mainEvent.id", target = "mainEventId")
+    @Mapping(source = "category.id", target = "categoryId")
+    @Mapping(source = "category.name", target = "categoryName")
+    EventCategoryInfo toEventCategoryInfo(EventCategory eventCategory);
 
-
+    List<EventCategoryInfo> toEventCategoryInfos(List<EventCategory> eventCategories);
 
 }

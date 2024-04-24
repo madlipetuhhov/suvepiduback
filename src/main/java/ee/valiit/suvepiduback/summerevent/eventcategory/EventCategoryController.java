@@ -1,7 +1,7 @@
 package ee.valiit.suvepiduback.summerevent.eventcategory;
 
-import ee.valiit.suvepiduback.domain.event.mainevent.eventcategory.EventCategory;
 import ee.valiit.suvepiduback.summerevent.category.dto.CategoryInfo;
+import ee.valiit.suvepiduback.summerevent.eventcategory.dto.EventCategoryInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +23,7 @@ public class EventCategoryController {
     @GetMapping("/event/categories")
     @Operation(summary = "Kõikide valitud kategooriate andmebaasist toomine vastava sündmuse kohta.",
             description = "Andmebaasist tuuakse vastava sündmuse kõik kategooriad mainEventId abil.")
-    public List<EventCategory> getEventCategories(@RequestParam Integer mainEventId) {
+    public List<EventCategoryInfo> getEventCategories(@RequestParam Integer mainEventId) {
         return eventCategoryService.getEventCategories(mainEventId);
     }
 

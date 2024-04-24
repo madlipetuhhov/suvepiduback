@@ -3,9 +3,11 @@ package ee.valiit.suvepiduback.summerevent.eventfeature;
 import ee.valiit.suvepiduback.domain.event.mainevent.MainEvent;
 import ee.valiit.suvepiduback.domain.event.mainevent.MainEventRepository;
 import ee.valiit.suvepiduback.domain.event.mainevent.eventfeature.EventFeature;
+import ee.valiit.suvepiduback.domain.event.mainevent.eventfeature.EventFeatureMapper;
 import ee.valiit.suvepiduback.domain.event.mainevent.eventfeature.EventFeatureRepository;
 import ee.valiit.suvepiduback.domain.event.mainevent.eventfeature.feature.Feature;
 import ee.valiit.suvepiduback.domain.event.mainevent.eventfeature.feature.FeatureRepository;
+import ee.valiit.suvepiduback.summerevent.eventfeature.dto.EventFeatureInfo;
 import ee.valiit.suvepiduback.summerevent.feature.dto.FeatureInfo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,7 @@ public class EventFeatureService {
     private final EventFeatureRepository eventFeatureRepository;
     private final MainEventRepository mainEventRepository;
     private final FeatureRepository featureRepository;
+    private final EventFeatureMapper eventFeatureMapper;
 
     public void addNewFeatures(Integer mainEventId, List<FeatureInfo> featureInfos) {
         MainEvent mainEvent = mainEventRepository.getReferenceById(mainEventId);
@@ -44,6 +47,9 @@ public class EventFeatureService {
         return eventFeatures;
     }
 
-
+    public List<EventFeatureInfo> getEventFeatures(Integer mainEventId) {
+        List<EventFeature> eventFeatures = eventFeatureRepository.findEventFeaturesBy(mainEventId);
+        return eventFeatureMapper.toEventFeatureInfos(eventFeatures);
+    }
 }
 
