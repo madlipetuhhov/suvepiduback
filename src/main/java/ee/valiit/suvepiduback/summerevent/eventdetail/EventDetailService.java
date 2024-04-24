@@ -11,6 +11,8 @@ import ee.valiit.suvepiduback.summerevent.eventdetail.dto.EventDetailInfo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Service
 public class EventDetailService {
@@ -51,8 +53,13 @@ public class EventDetailService {
        // pead need 'eventDetail' objektile külge panema
         // nyyd saad selle eventDetail objekti andmebaasi repository abil ära salvestadada
         // the end
-
-
-
     }
+
+
+    public List<EventDetailInfo> getEventDetails(Integer mainEventId) {
+        List<EventDetail> eventDetails = eventDetailRepository.findEventDetailsBy(mainEventId);
+        return eventDetailMapper.toEventDetailInfos(eventDetails);
+    }
+
+
 }
