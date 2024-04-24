@@ -17,8 +17,6 @@ public class FeatureService {
 
     public List<FeatureInfo> executeFeaturesList() {
         List<Feature> features = featureRepository.findAll();
-//        kuidas saada list tähestikku, query-ga ei saanud tööle
-
         return featureMapper.toFeatureInfos(features);
     }
 }

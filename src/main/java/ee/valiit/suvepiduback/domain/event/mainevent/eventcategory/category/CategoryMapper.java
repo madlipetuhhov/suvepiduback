@@ -14,4 +14,7 @@ public interface CategoryMapper {
 
     List<CategoryInfo> toCategoryInfos(List<Category> categories);
 
+
+
+
 }

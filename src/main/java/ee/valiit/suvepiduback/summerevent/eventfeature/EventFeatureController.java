@@ -15,7 +15,7 @@ import java.util.List;
 public class EventFeatureController {
     private final EventFeatureService eventFeatureService;
 
-    @PostMapping("/event/features/")
+    @PostMapping("/event/features")
     @Operation(summary = "Uuele sündmusele võimaluste lisamine. Tagastab mainEventId. ",
             description = "Süsteemi lisatakse sündmusele juurde võimalused mainEventId abil.")
     public void addNewFeatures(@RequestParam Integer mainEventId, @RequestBody List<FeatureInfo> featureInfos) {

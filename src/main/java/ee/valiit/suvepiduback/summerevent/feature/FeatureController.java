@@ -13,7 +13,7 @@ import java.util.List;
 public class FeatureController {
     private final FeatureService featureService;
 
-    @GetMapping("/feature")
+    @GetMapping("/features")
     @Operation(summary = "Võimaluste valiku loomine.",
             description = "Süsteemist otsitakse võimalused (featureName) ja tagastab võimaluste massiivi.")
     public List<FeatureInfo> executeFeaturesList() {
