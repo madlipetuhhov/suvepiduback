@@ -32,7 +32,6 @@ public class TicketService {
 
         //Vbla läheb eventTicketId'd tarvis
         //return eventTicket.getId();
-
     }
 
     public void getEventTicket() {
