@@ -54,7 +54,9 @@ public class EventCategoryService {
     }
 
     public List<EventCategoryInfo> editEventCategories(Integer mainEventId, List<EventCategoryInfo> eventCategoryInfos) {
+        List<Category> categories = categoryRepository.findAll();
         List<EventCategory> eventCategories = eventCategoryRepository.findEventCategoriesBy(mainEventId);
+
 
 
         return eventCategoryInfos;
