@@ -1,5 +1,6 @@
 package ee.valiit.suvepiduback.domain.ticket.tickettype;
 
+import ee.valiit.suvepiduback.summerevent.ticket.dto.EventTicketTypeInfo;
 import ee.valiit.suvepiduback.summerevent.tickettype.dto.TicketTypeInfo;
 import ee.valiit.suvepiduback.summerevent.tickettype.dto.TicketTypeInfoExtended;
 import org.mapstruct.*;
@@ -26,4 +27,10 @@ public interface TicketTypeMapper {
     @Mapping(target = "name", source = "ticketTypeName")
     void editTicketType(TicketTypeInfoExtended ticketTypeInfoExtended, @MappingTarget TicketType ticketType);
 
+    @Mapping(source = "id", target = "eventTicketTypeId")
+    @Mapping(source = "name", target = "eventTicketTypeName")
+    EventTicketTypeInfo toEventTicketTypeInfo(TicketType ticketType);
+
+
+    List <EventTicketTypeInfo> toEventTicketTypeInfos(List <TicketType> ticketTypes);
 }
