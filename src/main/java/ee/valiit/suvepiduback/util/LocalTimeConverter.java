@@ -6,7 +6,7 @@ import java.time.ZoneId;
 public class LocalTimeConverter {
 
     public static LocalTime stringToLocalTime(String timeString) {
-        // Split the time string into hours and minutes
+        // Split the time string into hours and minutes 10:00
         String[] parts = timeString.split(":");
         int hours = Integer.parseInt(parts[0]);
         int minutes = Integer.parseInt(parts[1]);
