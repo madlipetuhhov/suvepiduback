@@ -12,14 +12,10 @@ public interface EventCategoryMapper {
     @Mapping(source = "mainEvent.id", target = "mainEventId")
     @Mapping(source = "category.id", target = "categoryId")
     @Mapping(source = "category.name", target = "categoryName")
+    @Mapping(constant = "true", target = "isAvailable")
     EventCategoryInfo toEventCategoryInfo(EventCategory eventCategory);
 
     List<EventCategoryInfo> toEventCategoryInfos(List<EventCategory> eventCategories);
 
-//    @Mapping(source = "categoryId", target = "category.id")
-//    @Mapping(source = "categoryName", target = "")
-//    @Mapping(source = "isAvailable", target = "")
-//    @Mapping(source = "isAvailable", target = "")
-//    void editEventCategories(CategoryInfo categoryInfo, @MappingTarget EventCategory eventCategory);
 
 }

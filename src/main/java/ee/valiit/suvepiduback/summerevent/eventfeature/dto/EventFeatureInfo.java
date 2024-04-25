@@ -17,4 +17,5 @@ public class EventFeatureInfo implements Serializable {
     private Integer featureId;
     private Integer mainEventId;
     private String featureName;
+    private Boolean isAvailable;
 }

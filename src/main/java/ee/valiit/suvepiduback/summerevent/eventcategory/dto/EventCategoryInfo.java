@@ -17,5 +17,5 @@ public class EventCategoryInfo implements Serializable {
     private Integer categoryId;
     private Integer mainEventId;
     private String categoryName;
-    private Boolean isAvailable = false;
+    private Boolean isAvailable;
 }
