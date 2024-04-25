@@ -1,5 +1,6 @@
 package ee.valiit.suvepiduback.domain.event.mainevent.eventcategory;
 
+import ee.valiit.suvepiduback.summerevent.category.dto.CategoryInfo;
 import ee.valiit.suvepiduback.summerevent.eventcategory.dto.EventCategoryInfo;
 import org.mapstruct.*;
 
@@ -14,5 +15,11 @@ public interface EventCategoryMapper {
     EventCategoryInfo toEventCategoryInfo(EventCategory eventCategory);
 
     List<EventCategoryInfo> toEventCategoryInfos(List<EventCategory> eventCategories);
+
+//    @Mapping(source = "categoryId", target = "category.id")
+//    @Mapping(source = "categoryName", target = "")
+//    @Mapping(source = "isAvailable", target = "")
+//    @Mapping(source = "isAvailable", target = "")
+//    void editEventCategories(CategoryInfo categoryInfo, @MappingTarget EventCategory eventCategory);
 
 }

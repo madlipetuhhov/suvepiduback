@@ -53,5 +53,7 @@ public class EventCategoryService {
         return eventCategoryMapper.toEventCategoryInfos(eventCategories);
     }
 
+    public void editEventCategories(Integer mainEventId, List<CategoryInfo> categoryInfos) {
 
+    }
 }

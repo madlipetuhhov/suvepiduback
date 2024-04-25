@@ -27,7 +27,12 @@ public class EventCategoryController {
         return eventCategoryService.getEventCategories(mainEventId);
     }
 
-
+    @PutMapping("/event/categories")
+    @Operation(summary = "Olemasolevate kategooriate andmete muutmine mainEventId abil.",
+            description = "Andmebaasis kirjutatakse üle olemasolevate kategooriate andmed.")
+    public void editEventCategories(@RequestParam Integer mainEventId, @RequestBody List<CategoryInfo> categoryInfos) {
+        eventCategoryService.editEventCategories(mainEventId, categoryInfos);
+    }
 
 
 }

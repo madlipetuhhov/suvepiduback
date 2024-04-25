@@ -48,12 +48,12 @@ public class MainEventController {
     @PutMapping("/event/main")
     @Operation(summary = "Olemasoleva sündmuse andmete muutmine mainEventId abil.",
             description = "Andmebaasis kirjutatakse üle olemasoleva sündmuse andmed.")
-    public void updateMainEvent(@RequestBody MainEventInfoExtended mainEventInfoExtended) {
+    public void editMainEvent(@RequestBody MainEventInfoExtended mainEventInfoExtended) {
         // siin nt UpdateMainEventInfo DTO koos ID-ga
         // update MainEventInfo object
         // add new method in service to update data
         // in mainEventService.updateMainEvent add relevant repository code
-        mainEventService.updateMainEvent(mainEventInfoExtended);
+        mainEventService.editMainEvent(mainEventInfoExtended);
     }
 
     // siin tagastad kustutatud objekti ID, aga ainult selleks, et kontrollida frontendis kas see õnnestus
