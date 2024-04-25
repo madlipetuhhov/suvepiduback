@@ -19,11 +19,9 @@ import java.time.LocalTime;
 @NoArgsConstructor
 public class EventDetailInfo implements Serializable {
     @NotNull
-    private Integer mainEventId;
-    @NotNull
     private Integer countyId;
     @NotNull
-    private LocalDate date;
+    private String date;
     @NotNull
     private String startTime;
     @NotNull

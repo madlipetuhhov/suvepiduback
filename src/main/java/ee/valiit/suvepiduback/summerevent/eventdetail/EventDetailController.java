@@ -1,5 +1,6 @@
 package ee.valiit.suvepiduback.summerevent.eventdetail;
 
+import ee.valiit.suvepiduback.domain.event.eventdetail.EventDetail;
 import ee.valiit.suvepiduback.summerevent.eventdetail.dto.EventDetailInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
@@ -13,7 +14,7 @@ public class EventDetailController {
 
     private final EventDetailService eventDetailService;
 
-    @PostMapping("/event/detail/")
+    @PostMapping("/event/detail")
     @Operation(summary = "Uuele sündmusesarjale detailide lisamine. Tagastab eventDetailId. ",
             description = "Süsteemi lisatakse sündmusele juurde detailid eventDetailId abil.")
     public Integer addEventDetail(@RequestParam Integer mainEventId, @RequestBody EventDetailInfo eventDetailInfo) {
@@ -21,13 +22,19 @@ public class EventDetailController {
 
     }
 
-    @GetMapping("/event/details/")
+    @GetMapping("/event/details")
     @Operation(summary = "Sündmuste listi toomine andmebaasist vastavalt mainEventId-le",
             description = "Andmebaasist tuuakse vastava ürituse sarja kõik toimumiskohad (detailid) mainEventId abil")
     public List<EventDetailInfo> getEventDetails(@RequestParam Integer mainEventId) {
-        eventDetailService.getEventDetails(mainEventId);
         return eventDetailService.getEventDetails(mainEventId);
 
     }
 
+//    @GetMapping("/event/detail")
+//    @Operation(summary = "Ühele üritusele vastavate detailide toomine",
+//            description = "Andmebaasist tuuakse ühed detailid eventDetailId abil")
+//    public EventDetailInfo getEventDetail(@RequestParam Integer mainEventId) {
+//        return eventDetailService.getEventDetail(mainEventId);
+//
+//    }
 }
