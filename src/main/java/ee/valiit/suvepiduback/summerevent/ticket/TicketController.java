@@ -2,6 +2,7 @@ package ee.valiit.suvepiduback.summerevent.ticket;
 
 import ee.valiit.suvepiduback.summerevent.ticket.dto.EventTicketInfo;
 import ee.valiit.suvepiduback.summerevent.ticket.dto.EventTicketRequest;
+import ee.valiit.suvepiduback.summerevent.ticket.dto.EventTicketTypeInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -28,4 +29,10 @@ public class TicketController {
         return ticketService.getEventTickets(eventDetailId);
     }
 
+    @GetMapping("/event/ticket-types")
+    @Operation(summary = "Piletitüüpide valiku loomine",
+            description = "Süsteemist otsitakse piletitüübid mainEventId järgi ja tagastatakse ticketType massiiv.")
+    public List<EventTicketTypeInfo> getEventTicketTypes(@RequestParam Integer mainEventId) {
+        return ticketService.getEventTicketTypes(mainEventId);
+    }
 }
