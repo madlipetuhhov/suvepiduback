@@ -42,7 +42,7 @@ public class MainEventService {
 
     public void editMainEvent(MainEventInfoExtended mainEventInfoExtended) {
         MainEvent mainEvent = mainEventRepository.getReferenceById(mainEventInfoExtended.getMainEventId());
-        mainEventMapper.editMainEvent(mainEventInfoExtended, mainEvent);
+        mainEventMapper.updateMainEvent(mainEventInfoExtended, mainEvent);
         mainEventRepository.save(mainEvent);
     }
 

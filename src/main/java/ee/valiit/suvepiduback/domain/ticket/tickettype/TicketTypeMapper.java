@@ -25,7 +25,7 @@ public interface TicketTypeMapper {
     @Mapping(target = "mainEvent.id", source = "mainEventId")
     @Mapping(target = "price", source = "ticketTypePrice")
     @Mapping(target = "name", source = "ticketTypeName")
-    void editTicketType(TicketTypeInfoExtended ticketTypeInfoExtended, @MappingTarget TicketType ticketType);
+    void updateTicketType(TicketTypeInfoExtended ticketTypeInfoExtended, @MappingTarget TicketType ticketType);
 
     @Mapping(source = "id", target = "eventTicketTypeId")
     @Mapping(source = "name", target = "eventTicketTypeName")

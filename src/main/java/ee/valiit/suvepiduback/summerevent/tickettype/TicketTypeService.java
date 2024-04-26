@@ -38,7 +38,7 @@ public class TicketTypeService {
 
     public void editTicketType(TicketTypeInfoExtended ticketTypeInfoExtended) {
         TicketType ticketType = ticketTypeRepository.getReferenceById(ticketTypeInfoExtended.getTicketTypeId());
-        ticketTypeMapper.editTicketType(ticketTypeInfoExtended, ticketType);
+        ticketTypeMapper.updateTicketType(ticketTypeInfoExtended, ticketType);
         ticketTypeRepository.save(ticketType);
     }
 
