@@ -1,7 +1,7 @@
 package ee.valiit.suvepiduback.summerevent.eventdetail;
 
-import ee.valiit.suvepiduback.domain.event.eventdetail.EventDetail;
 import ee.valiit.suvepiduback.summerevent.eventdetail.dto.EventDetailInfo;
+import ee.valiit.suvepiduback.summerevent.eventdetail.dto.EventDetailInfoExtended;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -22,19 +22,26 @@ public class EventDetailController {
 
     }
 
+    @GetMapping("/event/detail")
+    @Operation(summary = "Sündmuse detailide toomine andmebaasist vastavalt mainEventId-le",
+            description = "Andmebaasist tuuakse vastava ürituse sarja detailid mainEventId abil")
+    public EventDetailInfoExtended getEventDetail(@RequestParam Integer mainEventId) {
+        return eventDetailService.getEventDetail(mainEventId);
+
+    }
+
     @GetMapping("/event/details")
     @Operation(summary = "Sündmuste listi toomine andmebaasist vastavalt mainEventId-le",
             description = "Andmebaasist tuuakse vastava ürituse sarja kõik toimumiskohad (detailid) mainEventId abil")
-    public List<EventDetailInfo> getEventDetails(@RequestParam Integer mainEventId) {
+    public List<EventDetailInfoExtended> getEventDetails(@RequestParam Integer mainEventId) {
         return eventDetailService.getEventDetails(mainEventId);
 
     }
 
-//    @GetMapping("/event/detail")
-//    @Operation(summary = "Ühele üritusele vastavate detailide toomine",
-//            description = "Andmebaasist tuuakse ühed detailid eventDetailId abil")
-//    public EventDetailInfo getEventDetail(@RequestParam Integer mainEventId) {
-//        return eventDetailService.getEventDetail(mainEventId);
-//
-//    }
+    @PutMapping("/event/detail")
+    @Operation(summary = "Olemasoleva sündmuse detailide andmete muutmine mainEventId abil.",
+            description = "Andmebaasis kirjutatakse üle olemasoleva sündmuse detailide andmed.")
+    public void editEventDetail(@RequestBody EventDetailInfoExtended eventDetailInfoExtended) {
+        eventDetailService.editEventDetail(eventDetailInfoExtended);
+    }
 }
