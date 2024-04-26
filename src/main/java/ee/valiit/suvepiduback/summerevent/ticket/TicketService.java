@@ -50,4 +50,10 @@ public class TicketService {
         return ticketTypeMapper.toEventTicketTypeInfos(ticketTypes);
 
     }
+
+    public void editTicketDetail(Integer eventDetailId, EventTicketInfo eventTicketInfo) {
+        EventTicket eventTicket = eventTicketRepository.getReferenceById(eventDetailId);
+        eventTicketMapper.updateEventTicketDetail(eventTicketInfo, eventTicket);
+        eventTicketRepository.save(eventTicket);
+    }
 }

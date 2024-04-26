@@ -35,4 +35,11 @@ public class TicketController {
     public List<EventTicketTypeInfo> getEventTicketTypes(@RequestParam Integer mainEventId) {
         return ticketService.getEventTicketTypes(mainEventId);
     }
+
+    @PutMapping("/event/ticket")
+    @Operation(summary = "Olemasoleva pileti andmete muutmine eventDetailId abil.",
+            description = "Andmebaasis kirjutatakse üle olemasoleva pileti detailide andmed.")
+    public void editTicketDetail(@RequestParam Integer eventDetailId, @RequestBody EventTicketInfo eventTicketInfo) {
+        ticketService.editTicketDetail(eventDetailId, eventTicketInfo);
+    }
 }
