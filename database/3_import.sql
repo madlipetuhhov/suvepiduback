@@ -95,7 +95,7 @@ INSERT INTO suvepidu.event_detail (id, main_event_id, county_id, date, start_tim
 VALUES (default, 1, 9, '2024-05-18', '19:00:00', '21:00:00', 'Pärnu Vallikäär', 12.000000, 21.000000);
 INSERT INTO suvepidu.event_detail (id, main_event_id, county_id, date, start_time, end_time, address, longitude,
                                    latitude)
-VALUES (default, 1, 12, '2024-05-28', '19:00:00', '21:00:00', 'Pärnu Vallikäär', 12.000000, 21.000000);
+VALUES (default, 1, 12, '2024-05-28', '19:00:00', '21:00:00', 'Tartu Laululava', 12.000000, 21.000000);
 INSERT INTO suvepidu.event_detail (id, main_event_id, county_id, date, start_time, end_time, address, longitude,
                                    latitude)
 VALUES (default, 3, 1, '2024-06-05', '12:00:00', '16:00:00', 'Kõnnu Suursoo matkarada', 12.000000, 21.000000);
@@ -140,6 +140,19 @@ VALUES (default, 2, 4);
 INSERT INTO suvepidu.event_feature (id, main_event_id, feature_id)
 VALUES (default, 3, 1);
 
+INSERT INTO suvepidu.event_ticket (id, event_detail_id, ticket_type_id, total, available, status) VALUES (default, 4, 6, 10, 10, 'A');
+INSERT INTO suvepidu.event_ticket (id, event_detail_id, ticket_type_id, total, available, status) VALUES (default, 4, 7, 100, 100, 'A');
+INSERT INTO suvepidu.event_ticket (id, event_detail_id, ticket_type_id, total, available, status) VALUES (default, 1, 1, 250, 250, 'A');
+INSERT INTO suvepidu.event_ticket (id, event_detail_id, ticket_type_id, total, available, status) VALUES (default, 1, 2, 50, 50, 'A');
+INSERT INTO suvepidu.event_ticket (id, event_detail_id, ticket_type_id, total, available, status) VALUES (default, 1, 3, 50, 50, 'A');
+INSERT INTO suvepidu.event_ticket (id, event_detail_id, ticket_type_id, total, available, status) VALUES (default, 2, 1, 300, 300, 'A');
+INSERT INTO suvepidu.event_ticket (id, event_detail_id, ticket_type_id, total, available, status) VALUES (default, 2, 2, 50, 50, 'A');
+INSERT INTO suvepidu.event_ticket (id, event_detail_id, ticket_type_id, total, available, status) VALUES (default, 2, 3, 50, 50, 'A');
+INSERT INTO suvepidu.event_ticket (id, event_detail_id, ticket_type_id, total, available, status) VALUES (default, 3, 1, 500, 300, 'A');
+INSERT INTO suvepidu.event_ticket (id, event_detail_id, ticket_type_id, total, available, status) VALUES (default, 3, 2, 50, 50, 'A');
+INSERT INTO suvepidu.event_ticket (id, event_detail_id, ticket_type_id, total, available, status) VALUES (default, 3, 3, 50, 50, 'A');
+INSERT INTO suvepidu.event_ticket (id, event_detail_id, ticket_type_id, total, available, status) VALUES (default, 5, 4, 2000, 1000, 'A');
+INSERT INTO suvepidu.event_ticket (id, event_detail_id, ticket_type_id, total, available, status) VALUES (default, 5, 5, 1500, 500, 'A');
 
 
 
