@@ -24,9 +24,9 @@ public class EventDetailController {
 
     @GetMapping("/event/detail")
     @Operation(summary = "Sündmuse detailide toomine andmebaasist vastavalt mainEventId-le",
-            description = "Andmebaasist tuuakse vastava ürituse sarja detailid mainEventId abil")
-    public EventDetailInfoExtended getEventDetail(@RequestParam Integer mainEventId) {
-        return eventDetailService.getEventDetail(mainEventId);
+            description = "Andmebaasist tuuakse vastava ürituse sarja detailid eventDetailId abil")
+    public EventDetailInfo getEventDetail(@RequestParam Integer eventDetailId) {
+        return eventDetailService.getEventDetail(eventDetailId);
 
     }
 
@@ -41,7 +41,7 @@ public class EventDetailController {
     @PutMapping("/event/detail")
     @Operation(summary = "Olemasoleva sündmuse detailide andmete muutmine mainEventId abil.",
             description = "Andmebaasis kirjutatakse üle olemasoleva sündmuse detailide andmed.")
-    public void editEventDetail(@RequestBody EventDetailInfoExtended eventDetailInfoExtended) {
-        eventDetailService.editEventDetail(eventDetailInfoExtended);
+    public void editEventDetail(@RequestParam Integer eventDetailId, @RequestBody EventDetailInfo eventDetailInfo) {
+        eventDetailService.editEventDetail(eventDetailId, eventDetailInfo);
     }
 }
