@@ -41,12 +41,15 @@ public class EventDetailService {
         return eventDetailMapper.toEventDetailInfosExtended(eventDetails);
     }
 
-    public EventDetailInfoExtended getEventDetail(Integer mainEventId) {
-        EventDetail eventDetail = eventDetailRepository.findEventDetailBy(mainEventId);
-        return eventDetailMapper.toEventDetailInfoExtended(eventDetail);
+    public EventDetailInfo getEventDetail(Integer eventDetailId) {
+        EventDetail eventDetail = eventDetailRepository.getReferenceById(eventDetailId);
+        return eventDetailMapper.toEventDetailInfo(eventDetail);
     }
 
-    public void editEventDetail(EventDetailInfoExtended eventDetailInfoExtended) {
+    public void editEventDetail(Integer eventDetailId, EventDetailInfo eventDetailInfo) {
+        EventDetail eventDetail = eventDetailRepository.getReferenceById(eventDetailId);
+        eventDetailMapper.updateEventDetail(eventDetailInfo, eventDetail);
+        eventDetailRepository.save(eventDetail);
     }
 }
 

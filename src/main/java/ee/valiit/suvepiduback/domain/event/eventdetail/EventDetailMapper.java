@@ -20,16 +20,24 @@ public interface EventDetailMapper {
     EventDetail toEventDetail(EventDetailInfo eventDetailInfo);
 
     @Mapping(source = "county.id",target = "countyId")
+    @Mapping(expression = "java(LocalDateConverter.localDateToDateInputString   (eventDetail.getDate()))", target = "date")
+    EventDetailInfo toEventDetailInfo(EventDetail eventDetail);
+
+
+    @Mapping(source = "id",target = "eventDetailId")
+    @Mapping(source = "county.id",target = "countyId")
     @Mapping(source = "county.county",target = "countyName")
     @Mapping(expression = "java(LocalDateConverter.localDateToString(eventDetail.getDate()))", target = "date")
     EventDetailInfoExtended toEventDetailInfoExtended(EventDetail eventDetail);
 
     List<EventDetailInfoExtended> toEventDetailInfosExtended(List<EventDetail> eventDetails);
 
+    @Mapping(expression = "java(LocalDateConverter.stringToLocalDate(eventDetailInfo.getDate()))", target = "date")
+    @Mapping(expression = "java(LocalTimeConverter.stringToLocalTime(eventDetailInfo.getStartTime()))", target = "startTime")
+    @Mapping(expression = "java(LocalTimeConverter.stringToLocalTime(eventDetailInfo.getEndTime()))", target = "endTime")
+    @Mapping(source = "address", target = "address")
+    @Mapping(source = "longitude", target = "longitude")
+    @Mapping(source = "latitude", target = "latitude")
+    void updateEventDetail(EventDetailInfo eventDetailInfo, @MappingTarget EventDetail eventDetail);
 
-
-
-
-//    milleks teha tahad(milleks/kuhu andmed lähevad/saavad)
-//    sinine on meetodi nimi ehk milleks sa seda teha tahad, sulgudes on see, kust andmed tulevad
 }
