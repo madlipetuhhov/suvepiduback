@@ -57,16 +57,17 @@ public class EventCategoryService {
         return eventCategoryMapper.toEventCategoryInfos(eventCategories);
     }
 
+    //    EventFeatureService klassis on allolev mneetod kommentaarideta ja alammeetoditeks tehtud
     public List<CategoryInfo> getEventCategoriesForModal(Integer mainEventId) {
         // siin kõik kategooriad kätte saadud
         List<Category> categories = categoryRepository.findAll();
-        // siin on uus list DTOdega mappimiseks
-        List<CategoryInfo> categoryInfos = new ArrayList<>();
         // siin on list kategooriatest mis on main eventi kuljes
         List<EventCategory> eventCategories = eventCategoryRepository.findEventCategoriesBy(mainEventId);
+        // siin on uus list DTOdega mappimiseks
+        List<CategoryInfo> categoryInfos = new ArrayList<>();
         // siin loopime yle kategooriate
         for (Category category : categories) {
-            // siin loome uuet DTO(mapime)
+            // siin teeme uue DTO (mappimine ise)
             CategoryInfo categoryInfo = new CategoryInfo();
             // siin mapime uuele DTOle id ja nime
             categoryInfo.setCategoryId(category.getId());
@@ -85,12 +86,11 @@ public class EventCategoryService {
         return categoryInfos;
     }
 
-
+    //    EventFeatureService klassis on allolev mneetod kommentaarideta ja alammeetoditeks tehtud
     public void editEventCategories(Integer mainEventId, List<CategoryInfo> categoryInfos) {
         for (CategoryInfo categoryInfo : categoryInfos) {
             // vaatame kas see kategooria on true (kas on valitud frondist)
             Optional<EventCategory> optionalEventCategory = eventCategoryRepository.findEventCategoryBy(mainEventId, categoryInfo.getCategoryId());
-
             if (categoryInfo.getIsAvailable()) {
                 // kui on true, siis kontrollime, kas see on juba varem salvestatud event_category tabelis.
                 // kui on salvestatud, siis ei tee midagi. kui ei ole, siis salvestame sinna.
@@ -101,7 +101,7 @@ public class EventCategoryService {
                     eventCategory.setCategory(categoryRepository.getReferenceById(categoryInfo.getCategoryId()));
                     eventCategoryRepository.save(eventCategory);
                 }
-                // siin tegeleme nende kategooriatega mis on false.
+                // siin tegeleme nende kategooriatega mis on false (ehk mida enam pole vaja).
             } else {
                 // siis kontrollime, kas see on juba varem salvestatud event_category tabelis.
                 // kui siin tabelis on olemas, siis peame kustutama (kustutatakse need mida enam pole vaja)

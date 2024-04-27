@@ -13,6 +13,7 @@ import java.util.List;
 public class EventCategoryController {
     private final EventCategoryService eventCategoryService;
 
+    //    post meetod ei ole frondis kasutusel, put meetodi abil toimub muutmine
     @PostMapping("/event/categories")
     @Operation(summary = "Uuele sündmusele kategooriate lisamine.",
             description = "Süsteemi lisatakse sündmusele juurde kategooriad mainEventId abil.")
@@ -21,22 +22,22 @@ public class EventCategoryController {
     }
 
     @GetMapping("/event/categories")
-    @Operation(summary = "Kõikide valitud kategooriate andmebaasist toomine vastava sündmuse kohta.",
+    @Operation(summary = "Kõikide valitud kategooriate andmebaasist toomine vastava sündmuse kohta tabelis kuvamiseks.",
             description = "Andmebaasist tuuakse vastava sündmuse kõik kategooriad mainEventId abil.")
     public List<EventCategoryInfo> getEventCategoriesForView(@RequestParam Integer mainEventId) {
         return eventCategoryService.getEventCategoriesForView(mainEventId);
     }
 
     @GetMapping("/event/categories-modal")
-    @Operation(summary = "Kõikide valitud kategooriate andmebaasist toomine vastava sündmuse kohta.",
+    @Operation(summary = "Kõikide valitud kategooriate andmebaasist toomine vastava sündmuse kohta modalis kuvamiseks.",
             description = "Andmebaasist tuuakse vastava sündmuse kõik kategooriad mainEventId abil.")
     public List<CategoryInfo> getEventCategoriesForModal(@RequestParam Integer mainEventId) {
         return eventCategoryService.getEventCategoriesForModal(mainEventId);
     }
 
     @PutMapping("/event/categories-modal")
-    @Operation(summary = "Olemasolevate kategooriate andmete muutmine mainEventId abil.",
-            description = "Andmebaasis kirjutatakse üle olemasolevate kategooriate andmed.")
+    @Operation(summary = "Olemasolevate kategooriate andmete muutmine.",
+            description = "Andmebaasis kirjutatakse üle andmed.")
     public void editEventCategories(@RequestParam Integer mainEventId, @RequestBody List<CategoryInfo> categoryInfos) {
         eventCategoryService.editEventCategories(mainEventId, categoryInfos);
     }

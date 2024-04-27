@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -23,7 +24,7 @@ public class EventFeatureService {
     private final FeatureRepository featureRepository;
     private final EventFeatureMapper eventFeatureMapper;
 
-    public void addNewFeatures(Integer mainEventId, List<FeatureInfo> featureInfos) {
+    public void updateFeatures(Integer mainEventId, List<FeatureInfo> featureInfos) {
         MainEvent mainEvent = mainEventRepository.getReferenceById(mainEventId);
         createAndSaveEventFeatures(mainEvent, featureInfos);
     }
@@ -47,9 +48,62 @@ public class EventFeatureService {
         return eventFeatures;
     }
 
-    public List<EventFeatureInfo> getEventFeatures(Integer mainEventId) {
+    public List<EventFeatureInfo> getEventFeaturesForView(Integer mainEventId) {
         List<EventFeature> eventFeatures = eventFeatureRepository.findEventFeaturesBy(mainEventId);
         return eventFeatureMapper.toEventFeatureInfos(eventFeatures);
+    }
+
+
+    public List<FeatureInfo> getEventFeaturesForModal(Integer mainEventId) {
+        List<Feature> features = featureRepository.findAll();
+        return createAndSaveEventFeaturesForModal(mainEventId, features);
+    }
+
+    //  EventCategoryService klassis on allolev meetod koos kommentaaridega, mis toimub mis real
+    private List<FeatureInfo> createAndSaveEventFeaturesForModal(Integer mainEventId, List<Feature> features) {
+        List<EventFeature> eventFeatures = eventFeatureRepository.findEventFeaturesBy(mainEventId);
+        return createEventFeaturesForModal(features, eventFeatures);
+    }
+
+    private static List<FeatureInfo> createEventFeaturesForModal(List<Feature> features, List<EventFeature> eventFeatures) {
+        List<FeatureInfo> featureInfos = new ArrayList<>();
+        for (Feature feature : features) {
+            FeatureInfo featureInfo = new FeatureInfo();
+            featureInfo.setFeatureId(feature.getId());
+            featureInfo.setFeatureName(feature.getName());
+            for (EventFeature eventFeature : eventFeatures) {
+                if (feature.getId().equals(eventFeature.getFeature().getId())) {
+                    featureInfo.setIsAvailable(true);
+                }
+            }
+            featureInfos.add(featureInfo);
+        }
+        return featureInfos;
+    }
+
+    //  EventCategoryService klassis on allolev meetod koos kommentaaridega, mis toimub mis real
+    public void editEventFeatures(Integer mainEventId, List<FeatureInfo> featureInfos) {
+        for (FeatureInfo featureInfo : featureInfos) {
+            saveOrDeleteOptionalEventFeatures(mainEventId, featureInfo);
+        }
+    }
+
+    private void saveOrDeleteOptionalEventFeatures(Integer mainEventId, FeatureInfo featureInfo) {
+        Optional<EventFeature> optionalEventFeature = eventFeatureRepository.findEventFeatureBy(mainEventId, featureInfo.getFeatureId());
+        if (featureInfo.getIsAvailable()) {
+            createAndSaveOptionalEventFeatures(mainEventId, featureInfo, optionalEventFeature);
+        } else {
+            optionalEventFeature.ifPresent(eventFeatureRepository::delete);
+        }
+    }
+
+    private void createAndSaveOptionalEventFeatures(Integer mainEventId, FeatureInfo featureInfo, Optional<EventFeature> optionalEventFeature) {
+        if (optionalEventFeature.isEmpty()) {
+            EventFeature eventFeature = new EventFeature();
+            eventFeature.setMainEvent(mainEventRepository.getReferenceById(mainEventId));
+            eventFeature.setFeature(featureRepository.getReferenceById(featureInfo.getFeatureId()));
+            eventFeatureRepository.save(eventFeature);
+        }
     }
 }
 
