@@ -16,22 +16,29 @@ public class EventCategoryController {
     @PostMapping("/event/categories")
     @Operation(summary = "Uuele sündmusele kategooriate lisamine.",
             description = "Süsteemi lisatakse sündmusele juurde kategooriad mainEventId abil.")
-    public void addNewCategory(@RequestParam Integer mainEventId, @RequestBody List<CategoryInfo> categoryInfos) {
-        eventCategoryService.addNewCategory(mainEventId, categoryInfos);
+    public void updateCategories(@RequestParam Integer mainEventId, @RequestBody List<CategoryInfo> categoryInfos) {
+        eventCategoryService.updateCategories(mainEventId, categoryInfos);
     }
 
     @GetMapping("/event/categories")
     @Operation(summary = "Kõikide valitud kategooriate andmebaasist toomine vastava sündmuse kohta.",
             description = "Andmebaasist tuuakse vastava sündmuse kõik kategooriad mainEventId abil.")
-    public List<EventCategoryInfo> getEventCategories(@RequestParam Integer mainEventId) {
-        return eventCategoryService.getEventCategories(mainEventId);
+    public List<EventCategoryInfo> getEventCategoriesForView(@RequestParam Integer mainEventId) {
+        return eventCategoryService.getEventCategoriesForView(mainEventId);
     }
 
-    @PutMapping("/event/categories")
+    @GetMapping("/event/categories-modal")
+    @Operation(summary = "Kõikide valitud kategooriate andmebaasist toomine vastava sündmuse kohta.",
+            description = "Andmebaasist tuuakse vastava sündmuse kõik kategooriad mainEventId abil.")
+    public List<CategoryInfo> getEventCategoriesForModal(@RequestParam Integer mainEventId) {
+        return eventCategoryService.getEventCategoriesForModal(mainEventId);
+    }
+
+    @PutMapping("/event/categories-modal")
     @Operation(summary = "Olemasolevate kategooriate andmete muutmine mainEventId abil.",
             description = "Andmebaasis kirjutatakse üle olemasolevate kategooriate andmed.")
-    public List<EventCategoryInfo> editEventCategories(@RequestParam Integer mainEventId, @RequestBody List<EventCategoryInfo> eventCategoryInfos) {
-       return eventCategoryService.editEventCategories(mainEventId, eventCategoryInfos);
+    public void editEventCategories(@RequestParam Integer mainEventId, @RequestBody List<CategoryInfo> categoryInfos) {
+        eventCategoryService.editEventCategories(mainEventId, categoryInfos);
     }
 
 

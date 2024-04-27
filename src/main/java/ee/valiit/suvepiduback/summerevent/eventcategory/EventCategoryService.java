@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -24,7 +25,7 @@ public class EventCategoryService {
     private final EventCategoryMapper eventCategoryMapper;
 
 
-    public void addNewCategory(Integer mainEventId, List<CategoryInfo> categoryInfos) {
+    public void updateCategories(Integer mainEventId, List<CategoryInfo> categoryInfos) {
         MainEvent mainEvent = mainEventRepository.getReferenceById(mainEventId);
         createAndSaveEventCategories(mainEvent, categoryInfos);
     }
@@ -37,6 +38,9 @@ public class EventCategoryService {
     private List<EventCategory> createEventCategories(List<CategoryInfo> categoryInfos, MainEvent mainEvent) {
         List<EventCategory> eventCategories = new ArrayList<>();
         for (CategoryInfo categoryInfo : categoryInfos) {
+//            esimene on andmetüüp (deklareerin sealt muutujat, võib ka olla var), teine on ajutine muutuja for loopi sees
+//            (listis andme tükk on iga kord selle muutuja sees, kui loop käivitub). Kolmas on massiiv, mida loopin ja
+//            loop käib nii mitu korda läbi kui suur on massiiv.
             if (categoryInfo.getIsAvailable()) {
                 Category category = categoryRepository.getReferenceById(categoryInfo.getCategoryId());
                 EventCategory eventCategory = new EventCategory();
@@ -48,17 +52,64 @@ public class EventCategoryService {
         return eventCategories;
     }
 
-    public List<EventCategoryInfo> getEventCategories(Integer mainEventId) {
+    public List<EventCategoryInfo> getEventCategoriesForView(Integer mainEventId) {
         List<EventCategory> eventCategories = eventCategoryRepository.findEventCategoriesBy(mainEventId);
         return eventCategoryMapper.toEventCategoryInfos(eventCategories);
     }
 
-    public List<EventCategoryInfo> editEventCategories(Integer mainEventId, List<EventCategoryInfo> eventCategoryInfos) {
+    public List<CategoryInfo> getEventCategoriesForModal(Integer mainEventId) {
+        // siin kõik kategooriad kätte saadud
         List<Category> categories = categoryRepository.findAll();
+        // siin on uus list DTOdega mappimiseks
+        List<CategoryInfo> categoryInfos = new ArrayList<>();
+        // siin on list kategooriatest mis on main eventi kuljes
         List<EventCategory> eventCategories = eventCategoryRepository.findEventCategoriesBy(mainEventId);
+        // siin loopime yle kategooriate
+        for (Category category : categories) {
+            // siin loome uuet DTO(mapime)
+            CategoryInfo categoryInfo = new CategoryInfo();
+            // siin mapime uuele DTOle id ja nime
+            categoryInfo.setCategoryId(category.getId());
+            categoryInfo.setCategoryName(category.getName());
+            // siin loopime eventcategoried et leida kas on available v mitte
+            for (EventCategory eventCategory : eventCategories) {
+                // kui leiame vaste, siis available = true
+                if (category.getId().equals(eventCategory.getCategory().getId())) {
+                    categoryInfo.setIsAvailable(true);
+                }
+            }
+            // siin lisame uue DTO meie eelnevalt loodud uue DTO listi sisse
+            categoryInfos.add(categoryInfo);
+        }
 
-
-
-        return eventCategoryInfos;
+        return categoryInfos;
     }
+
+
+    public void editEventCategories(Integer mainEventId, List<CategoryInfo> categoryInfos) {
+        for (CategoryInfo categoryInfo : categoryInfos) {
+            // vaatame kas see kategooria on true (kas on valitud frondist)
+            Optional<EventCategory> optionalEventCategory = eventCategoryRepository.findEventCategoryBy(mainEventId, categoryInfo.getCategoryId());
+
+            if (categoryInfo.getIsAvailable()) {
+                // kui on true, siis kontrollime, kas see on juba varem salvestatud event_category tabelis.
+                // kui on salvestatud, siis ei tee midagi. kui ei ole, siis salvestame sinna.
+                // salvestatakse juurde need kategooriad, mida on vaja juurde
+                if (optionalEventCategory.isEmpty()) {
+                    EventCategory eventCategory = new EventCategory();
+                    eventCategory.setMainEvent(mainEventRepository.getReferenceById(mainEventId));
+                    eventCategory.setCategory(categoryRepository.getReferenceById(categoryInfo.getCategoryId()));
+                    eventCategoryRepository.save(eventCategory);
+                }
+                // siin tegeleme nende kategooriatega mis on false.
+            } else {
+                // siis kontrollime, kas see on juba varem salvestatud event_category tabelis.
+                // kui siin tabelis on olemas, siis peame kustutama (kustutatakse need mida enam pole vaja)
+                if (optionalEventCategory.isPresent()) {
+                    eventCategoryRepository.delete(optionalEventCategory.get());
+                }
+            }
+        }
+    }
+
 }
